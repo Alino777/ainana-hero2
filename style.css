@@ -1,0 +1,82 @@
+body {
+  margin: 0;
+  font-family: 'Outfit', sans-serif;
+  background: #fffceb;
+  scroll-behavior: smooth;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #ffc625;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  z-index: 10;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+}
+
+.logo img {
+  height: 40px;
+}
+
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  color: white;
+  text-align: center;
+}
+
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.8;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 2rem;
+}
+
+.ainana-title {
+  font-family: 'bluescreens', sans-serif;
+  font-size: 5rem;
+  transform: rotate(-5deg);
+  color: black;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  transform: rotate(-3deg);
+  color: black;
+  margin-top: -10px;
+}
+
+.mascotte {
+  margin-top: 20px;
+  width: 60px;
+}
