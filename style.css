@@ -188,3 +188,93 @@ body {
     });
   });
 </script>
+
+.letter-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.envelope {
+  position: relative;
+  background: #fff1a6;
+  border: 3px solid #3c2c14;
+  border-radius: 16px;
+  padding: 2.5rem 1rem 1.5rem;
+  width: 300px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: #ffe78a;
+  border-bottom: 3px solid #3c2c14;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  transform-origin: top center;
+  transition: transform 0.3s ease;
+  z-index: 2;
+}
+
+.envelope.open .envelope-flap {
+  transform: rotateX(70deg);
+}
+
+.email-input {
+  margin-top: 10px;
+  border: none;
+  background: #fff9e3;
+  padding: 0.8rem 1rem;
+  width: 85%;
+  border-radius: 12px;
+  font-size: 1rem;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+  outline: none;
+  z-index: 1;
+  position: relative;
+}
+
+.face {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.eye {
+  width: 12px;
+  height: 12px;
+  background: #3c2c14;
+  border-radius: 50%;
+}
+
+.smile {
+  width: 25px;
+  height: 12px;
+  border-bottom: 3px solid #3c2c14;
+  border-radius: 0 0 12px 12px;
+}
+
+.stamp-button {
+  background: #ffc85c;
+  border: 3px dashed #3c2c14;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  padding: 0.7rem 1.4rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: bold;
+}
+
+.stamp-button:hover {
+  background: #ffdd85;
+  transform: scale(1.05);
+}
