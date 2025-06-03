@@ -117,7 +117,7 @@
   const confetto = document.createElement('div');
   confetto.classList.add('confetti');
   confetto.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
-  confetto.style.left = `${Math.random() * 100}%`;
+  confetto.style.left = `50%`;
   confetto.style.top = `0px`;
   document.querySelector('.letter-wrapper').appendChild(confetto);
   setTimeout(() => confetto.remove(), 400); // corrisponde a durata animazione
