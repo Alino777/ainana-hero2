@@ -181,6 +181,7 @@ body {
 }
 
 .letter-wrapper {
+  position: relative; /* ← AGGIUNGI QUESTA */
   display: flex;
   flex-direction: column;
   align-items: center;

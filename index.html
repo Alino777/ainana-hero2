@@ -78,7 +78,7 @@
           <div class="eye"></div>
         </div>
       </div>
-      <button type="submit" class="stamp-button" onclick="sendEmail()">📮 Iscriviti</button>
+      <button type="button" class="stamp-button" onclick="sendEmail()">📮 Iscriviti</button>
     </form>
   </section>
 
@@ -94,7 +94,7 @@
     function openEnvelope() {
       document.querySelector('.envelope').classList.add('open');
       const mouth = document.querySelector('.mouth');
-      mouth.classList.remove('smile');
+mouth.classList.remove('smile');
     }
 
     function closeEnvelope() {
@@ -102,27 +102,33 @@
     }
 
     function sendEmail() {
-      const btn = document.querySelector('.stamp-button');
-      const mouth = document.querySelector('.mouth');
-      mouth.classList.add('smile');
-      btn.innerText = "📤 Inviata!";
-      btn.style.backgroundColor = "#d6f5a3";
+  const btn = document.querySelector('.stamp-button');
+  const mouth = document.querySelector('.mouth');
 
-      for (let i = 0; i < 30; i++) {
-        const confetto = document.createElement('div');
-        confetto.classList.add('confetti');
-        confetto.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
-        confetto.style.left = `${Math.random() * 100}%`;
-        confetto.style.top = `${Math.random() * 30}px`;
-        document.querySelector('.letter-wrapper').appendChild(confetto);
-        setTimeout(() => confetto.remove(), 1200);
-      }
+  // Cambia espressione
+  mouth.classList.add('smile');
 
-      setTimeout(() => {
-        btn.innerText = "📮 Iscriviti";
-        btn.style.backgroundColor = "#ffc85c";
-      }, 2000);
-    }
+  // Cambia testo bottone
+  btn.innerText = "📤 Inviata!";
+  btn.style.backgroundColor = "#d6f5a3";
+
+  // Crea coriandoli
+  for (let i = 0; i < 30; i++) {
+    const confetto = document.createElement('div');
+    confetto.classList.add('confetti');
+    confetto.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
+    confetto.style.left = `${Math.random() * 100}%`;
+    confetto.style.top = `0px`;
+    document.querySelector('.letter-wrapper').appendChild(confetto);
+    setTimeout(() => confetto.remove(), 1200);
+  }
+
+  // Ripristina bottone dopo 2 secondi
+  setTimeout(() => {
+    btn.innerText = "📮 Iscriviti";
+    btn.style.backgroundColor = "#ffc85c";
+  }, 2000);
+}
   </script>
 
 </body>
