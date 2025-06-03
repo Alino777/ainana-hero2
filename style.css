@@ -1,4 +1,4 @@
-bbody {
+body {
   margin: 0;
   font-family: 'Outfit', sans-serif;
   background: #fffceb;
@@ -29,6 +29,7 @@ bbody {
   text-decoration: none;
   color: #000;
   font-weight: 600;
+  font-size: 1rem;
 }
 
 .logo img {
@@ -67,6 +68,10 @@ bbody {
   max-width: 400px;
   width: 80%;
   margin-bottom: 1rem;
+}
+.navbar a {
+  font-size: 1.1rem;
+  line-height: 1;
 }
 
 .subtitle {
