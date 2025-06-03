@@ -291,17 +291,21 @@ body {
 
 .confetti {
   position: absolute;
-  width: 12px;
-  height: 12px;
+  width: 6px;
+  height: 6px;
+  background: red;
+  animation: fall 0.4s ease-out forwards;
   border-radius: 50%;
-  animation: fall 0.2s linear forwards;
+  opacity: 0.8;
+  z-index: 10;
 }
 
 @keyframes fall {
   to {
-    transform: translateY(200px) rotate(360deg);
+    transform: translateY(60px) rotate(360deg);
     opacity: 0;
   }
 }
+
 
 

@@ -113,16 +113,16 @@
     btn.innerText = "📤 Inviata!";
     btn.style.backgroundColor = "#d6f5a3";
 
-    // Crea coriandoli nella lettera
-    for (let i = 0; i < 12; i++) {
-      const confetto = document.createElement('div');
-      confetto.classList.add('confetti');
-      confetto.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
-      confetto.style.left = `${Math.random() * 100}%`;
-      confetto.style.top = `0px`;
-      document.querySelector('.letter-wrapper').appendChild(confetto);
-      setTimeout(() => confetto.remove(), 500);
-    }
+    for (let i = 0; i < 6; i++) {
+  const confetto = document.createElement('div');
+  confetto.classList.add('confetti');
+  confetto.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
+  confetto.style.left = `${Math.random() * 100}%`;
+  confetto.style.top = `0px`;
+  document.querySelector('.letter-wrapper').appendChild(confetto);
+  setTimeout(() => confetto.remove(), 400); // corrisponde a durata animazione
+}
+
 
     // Crea coriandoli su tutta la pagina
     const duration = 3000;
