@@ -101,7 +101,7 @@
       <input type="email" name="email" placeholder="La tua email" class="email-input" required onfocus="openEnvelope()" onblur="closeEnvelope()" />
       <div class="face">
         <div class="eye"></div>
-        <div class="smile"></div>
+        <div class="mouth"></div>
         <div class="eye"></div>
       </div>
     </div>
@@ -117,3 +117,39 @@
   <a href="https://www.linkedin.com/company/ainana" target="_blank">LinkedIn</a>
 </section>
 
+<script>
+  function openEnvelope() {
+    document.querySelector('.envelope').classList.add('open');
+    const mouth = document.querySelector('.mouth');
+    mouth.classList.remove('smile');
+  }
+
+  function closeEnvelope() {
+    document.querySelector('.envelope').classList.remove('open');
+  }
+
+  function sendEmail() {
+    const btn = document.querySelector('.stamp-button');
+    const mouth = document.querySelector('.mouth');
+
+    mouth.classList.add('smile');
+    btn.innerText = "📤 Inviata!";
+    btn.style.backgroundColor = "#d6f5a3";
+
+    // coriandoli 🎊
+    for (let i = 0; i < 30; i++) {
+      const confetto = document.createElement('div');
+      confetto.classList.add('confetti');
+      confetto.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
+      confetto.style.left = `${Math.random() * 100}%`;
+      confetto.style.top = `${Math.random() * 30}px`;
+      document.querySelector('.letter-wrapper').appendChild(confetto);
+      setTimeout(() => confetto.remove(), 1200);
+    }
+
+    setTimeout(() => {
+      btn.innerText = "📮 Iscriviti";
+      btn.style.backgroundColor = "#ffc85c";
+    }, 2000);
+  }
+</script>
