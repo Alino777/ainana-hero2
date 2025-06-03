@@ -68,7 +68,7 @@
     <h2>Iscriviti alla lista d'attesa</h2>
     <p>Ricevi in anteprima l'accesso al test privato.</p>
 
-    <form action="https://formsubmit.co/tuamail@email.com" method="POST" class="letter-wrapper">
+    <form action="https://formsubmit.co/ainana.app@gmail.com" method="POST" class="letter-wrapper">
       <div class="envelope">
         <div class="envelope-flap"></div>
         <input type="email" name="email" placeholder="La tua email" class="email-input" required onfocus="openEnvelope()" onblur="closeEnvelope()" />
@@ -89,47 +89,69 @@
     <a href="https://www.linkedin.com/company/ainana" target="_blank">LinkedIn</a>
   </section>
 
-  <!-- Script finale corretto -->
-  <script>
-    function openEnvelope() {
-      document.querySelector('.envelope').classList.add('open');
-      const mouth = document.querySelector('.mouth');
-mouth.classList.remove('smile');
-    }
+<!-- Libreria coriandoli -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-    function closeEnvelope() {
-      document.querySelector('.envelope').classList.remove('open');
-    }
-
-    function sendEmail() {
-  const btn = document.querySelector('.stamp-button');
-  const mouth = document.querySelector('.mouth');
-
-  // Cambia espressione
-  mouth.classList.add('smile');
-
-  // Cambia testo bottone
-  btn.innerText = "📤 Inviata!";
-  btn.style.backgroundColor = "#d6f5a3";
-
-  // Crea coriandoli
-  for (let i = 0; i < 30; i++) {
-    const confetto = document.createElement('div');
-    confetto.classList.add('confetti');
-    confetto.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
-    confetto.style.left = `${Math.random() * 100}%`;
-    confetto.style.top = `0px`;
-    document.querySelector('.letter-wrapper').appendChild(confetto);
-    setTimeout(() => confetto.remove(), 1200);
+<script>
+  function openEnvelope() {
+    document.querySelector('.envelope').classList.add('open');
+    document.querySelector('.mouth').classList.remove('smile');
   }
 
-  // Ripristina bottone dopo 2 secondi
-  setTimeout(() => {
-    btn.innerText = "📮 Iscriviti";
-    btn.style.backgroundColor = "#ffc85c";
-  }, 2000);
-}
-  </script>
+  function closeEnvelope() {
+    document.querySelector('.envelope').classList.remove('open');
+  }
+
+  function sendEmail() {
+    const btn = document.querySelector('.stamp-button');
+    const mouth = document.querySelector('.mouth');
+
+    // Cambia espressione
+    mouth.classList.add('smile');
+
+    // Cambia testo bottone
+    btn.innerText = "📤 Inviata!";
+    btn.style.backgroundColor = "#d6f5a3";
+
+    // Crea coriandoli nella lettera
+    for (let i = 0; i < 30; i++) {
+      const confetto = document.createElement('div');
+      confetto.classList.add('confetti');
+      confetto.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
+      confetto.style.left = `${Math.random() * 100}%`;
+      confetto.style.top = `0px`;
+      document.querySelector('.letter-wrapper').appendChild(confetto);
+      setTimeout(() => confetto.remove(), 1200);
+    }
+
+    // Crea coriandoli su tutta la pagina
+    const duration = 3000;
+    const end = Date.now() + duration;
+    (function frame() {
+      confetti({
+        particleCount: 10,
+        angle: Math.random() * 360,
+        spread: 120,
+        startVelocity: 30,
+        scalar: 1.5,
+        ticks: 400,
+        origin: {
+          x: Math.random(),
+          y: Math.random()
+        }
+      });
+      if (Date.now() < end) {
+        requestAnimationFrame(frame);
+      }
+    })();
+
+    // Reset bottone
+    setTimeout(() => {
+      btn.innerText = "📮 Iscriviti";
+      btn.style.backgroundColor = "#ffc85c";
+    }, 2000);
+  }
+</script>
 
 </body>
 </html>
