@@ -1,4 +1,4 @@
-body {
+bbody {
   margin: 0;
   font-family: 'Outfit', sans-serif;
   background: #fffceb;
@@ -60,23 +60,22 @@ body {
   top: 50%;
   transform: translateY(-50%);
   padding: 2rem;
+  text-align: center;
 }
 
-.ainana-title {
-  font-family: 'bluescreens', sans-serif;
-  font-size: 5rem;
-  transform: rotate(-5deg);
-  color: black;
+.ainana-logo {
+  max-width: 400px;
+  width: 80%;
+  margin-bottom: 1rem;
 }
 
 .subtitle {
   font-size: 1.5rem;
-  transform: rotate(-3deg);
   color: black;
-  margin-top: -10px;
+  transform: rotate(-3deg);
 }
 
 .mascotte {
-  margin-top: 20px;
   width: 60px;
+  margin-top: 1rem;
 }
