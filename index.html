@@ -131,12 +131,10 @@
   function sendEmail() {
     const btn = document.querySelector('.stamp-button');
     const mouth = document.querySelector('.mouth');
-
     mouth.classList.add('smile');
     btn.innerText = "📤 Inviata!";
     btn.style.backgroundColor = "#d6f5a3";
 
-    // coriandoli 🎊
     for (let i = 0; i < 30; i++) {
       const confetto = document.createElement('div');
       confetto.classList.add('confetti');
@@ -153,3 +151,5 @@
     }, 2000);
   }
 </script>
+</body>
+</html>

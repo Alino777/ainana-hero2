@@ -314,3 +314,53 @@ body {
     opacity: 0;
   }
 }
+/* ————— AGGIORNAMENTI PER BUSTA KAWAII ————— */
+
+/* Centra il form */
+#form.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Animazione per il flap della busta */
+.envelope.open .envelope-flap {
+  transform: rotateX(70deg);
+}
+
+/* Cambia espressione della bocca da tonda a sorriso */
+.mouth {
+  width: 14px;
+  height: 14px;
+  background: #2b200f;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.mouth.smile {
+  width: 30px;
+  height: 15px;
+  background: transparent;
+  border-bottom: 4px solid #2b200f;
+  border-radius: 0 0 30px 30px;
+}
+
+/* Effetto coriandoli */
+.confetti {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: red;
+  animation: fall 1s ease-out forwards;
+  border-radius: 50%;
+  opacity: 0.8;
+  z-index: 10;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100px) rotate(360deg);
+    opacity: 0;
+  }
+}
