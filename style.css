@@ -100,6 +100,6 @@ body {
 }
 
 .navbar ul {
-  margin-left: 3rem;
-  margin-right: auto;
+  margin-left: auto;
+  margin-right: 3rem;
 }
