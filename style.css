@@ -11,8 +11,8 @@ body {
   width: 100%;
   background-color: #ffc625;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   padding: 1rem 2rem;
   z-index: 10;
 }
@@ -83,4 +83,23 @@ body {
 .mascotte {
   width: 60px;
   margin-top: 1rem;
+}
+
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+}
+
+.navbar li {
+  display: inline-block;
+}
+
+.navbar ul {
+  margin-left: auto;
+  margin-right: auto;
 }
