@@ -87,23 +87,19 @@
       margin: 0;
       padding: 0;
       overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      box-sizing: border-box;
     }
     
     .bg-video {
       position: absolute;
       top: 0;
       left: 0;
-      min-width: 100%;
-      min-height: 100%;
-      width: auto;
-      height: auto;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       z-index: -1;
+    }
     }
     🔒 Aggiunta importante al tuo CSS globale:
     Per evitare margini imprevisti su tutto il documento:
