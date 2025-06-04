@@ -479,10 +479,15 @@ justify-content: center;
       .feature p {
         font-size: 0.85rem;
       }
-
+      .video-wrapper {
+        width: 80%;
+        margin: 0 auto;
+      }
+    
 
       .video-wrapper iframe {
-        height: 250px; /* Altezza video ridotta su mobile */
+        height: 200px; /* Altezza video ridotta su mobile */
+        width: 100%;
       }
 
       .envelope {
