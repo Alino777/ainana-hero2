@@ -776,26 +776,39 @@ justify-content: center;
       }
     }
 
-    // Coriandoli con la libreria canvas-confetti
-    if (typeof confetti === 'function') {
-      const duration = 2000; // 2 secondi
-      const animationEnd = Date.now() + duration;
-      const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 1001 }; // zIndex più alto
-
-      function randomInRange(min, max) {
-        return Math.random() * (max - min) + min;
-      }
-
-      const interval = setInterval(function() {
-        const timeLeft = animationEnd - Date.now();
-        if (timeLeft <= 0) {
-          return clearInterval(interval);
-        }
-        const particleCount = 50 * (timeLeft / duration);
-        confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
-        confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
-      }, 250);
+    // Crea coriandoli grandi e visibili su tutta la pagina
+    const duration = 3000;
+    const animationEnd = Date.now() + duration;
+    const defaults = {
+      startVelocity: 35,
+      spread: 360,
+      ticks: 80,
+      zIndex: 1000,
+      scalar: 1.8, // rende i coriandoli più grandi
+    };
+    
+    function randomInRange(min, max) {
+      return Math.random() * (max - min) + min;
     }
+    
+    const interval = setInterval(function () {
+      const timeLeft = animationEnd - Date.now();
+    
+      if (timeLeft <= 0) {
+        return clearInterval(interval);
+      }
+    
+      confetti(
+        Object.assign({}, defaults, {
+          particleCount: 10,
+          origin: {
+            x: randomInRange(0.1, 0.9),
+            y: Math.random() - 0.2
+          }
+        })
+      );
+    }, 200);
+    
 
     // Reset bottone (questo avverrà anche se l'utente naviga via a causa dell'invio del form)
     // Se vuoi che il reset avvenga solo se l'utente resta sulla pagina (es. con invio AJAX),
