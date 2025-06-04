@@ -155,27 +155,15 @@
   setTimeout(() => confetto.remove(), 400); // corrisponde a durata animazione
 }
 
-
-    // Crea coriandoli su tutta la pagina
-    const duration = 3000;
-    const end = Date.now() + duration;
-    (function frame() {
-      confetti({
-        particleCount: 10,
-        angle: Math.random() * 360,
-        spread: 120,
-        startVelocity: 30,
-        scalar: 1.5,
-        ticks: 400,
-        origin: {
-          x: Math.random(),
-          y: Math.random()
-        }
-      });
-      if (Date.now() < end) {
-        requestAnimationFrame(frame);
-      }
-    })();
+for (let i = 0; i < 6; i++) {
+  const confetto = document.createElement('div');
+  confetto.classList.add('confetti');
+  confetto.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
+  confetto.style.left = `50%`;
+  confetto.style.top = `0px`;
+  document.querySelector('.letter-wrapper').appendChild(confetto);
+  setTimeout(() => confetto.remove(), 400); // corrisponde a durata animazione
+}
 
     // Reset bottone
     setTimeout(() => {
