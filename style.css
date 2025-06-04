@@ -28,7 +28,14 @@
       font-size: 2.6rem; /* Un valore di base, puoi aggiustarlo nelle media query se serve */
       font-weight: 600; /* Aggiunto per coerenza con Inter */
     }
-
+    #funzionalita .intro {
+      font-size: 1.5rem;
+    }
+    
+    #funzionalita .feature h3 {
+      font-size: 1.3rem;
+    }
+    
     h3 {
         font-weight: 600; /* Aggiunto per coerenza con Inter */
     }
