@@ -216,7 +216,7 @@
   opacity: 0;
   transition: opacity 0.3s ease;
   margin-top: 1rem;
-  font-size: 0.95rem;
+  font-size: 1.1rem;
 }
 
 .feature:hover p,
