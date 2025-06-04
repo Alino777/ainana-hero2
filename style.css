@@ -100,10 +100,18 @@
       object-fit: cover;
       z-index: -1;
     }
-    }
+    
     🔒 Aggiunta importante al tuo CSS globale:
     Per evitare margini imprevisti su tutto il documento:
     
+    .feature p {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .feature.active p {
+      opacity: 1;
+    }
     css
     Copia
     Modifica
@@ -550,7 +558,12 @@ justify-content: center;
         .feature {
             width: 95%;
         }
-    }
+        .feature p {
+          opacity: 1 !important;
+          height: auto;
+          visibility: visible;
+        }
+    
 
   </style>
 </head>
