@@ -415,7 +415,7 @@ body {
   
 
   .hero-button-wrapper {
-    top: 85%; /* più in basso su schermi piccoli */
+    top: 70%; /* più in basso su schermi piccoli */
   }
 
   .features {
@@ -430,7 +430,7 @@ body {
   }
 
   .video-wrapper iframe {
-    height: 220px;
+    height: 180px;
   }
 
   .intro {
@@ -478,14 +478,14 @@ body {
 
 /* DESKTOP NAVIGATION LINKS */
 .nav-links {
-  display: flex;
+  display: none;
   list-style: none;
   gap: 2rem;
 }
 
 .nav-links li a {
   text-decoration: none;
-  color: white; /* Colore desktop */
+  color: #000; /* Colore desktop */
   font-weight: 600;
 }
 
