@@ -155,6 +155,36 @@
   setTimeout(() => confetto.remove(), 400); // corrisponde a durata animazione
 }
 
+const duration = 2000;
+const animationEnd = Date.now() + duration;
+const defaults = {
+  startVelocity: 30,
+  spread: 360,
+  ticks: 60,
+  zIndex: 9999,
+  scalar: 1.6
+};
+
+function randomInRange(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+const interval = setInterval(function() {
+  const timeLeft = animationEnd - Date.now();
+
+  if (timeLeft <= 0) {
+    return clearInterval(interval);
+  }
+
+  confetti(Object.assign({}, defaults, {
+    particleCount: 10,
+    origin: {
+      x: randomInRange(0.2, 0.8),
+      y: Math.random() - 0.2
+    }
+  }));
+}, 200);
+
 for (let i = 0; i < 6; i++) {
   const confetto = document.createElement('div');
   confetto.classList.add('confetti');
