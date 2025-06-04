@@ -50,6 +50,7 @@
         font-weight: 600; /* Aggiunto per coerenza con Inter */
     }
     #demo h2 {
+      font-size: 2.6rem;
       margin-bottom: 2rem; /* Aggiusta il valore a piacimento */
     }
     
