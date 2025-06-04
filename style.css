@@ -76,6 +76,12 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
+  }
+  /* Per desktop: abbassa il tasto */
+@media (min-width: 769px) {
+  .hero-button-wrapper {
+    top: 75%;
+  }
 }
 
 .hero-button {
@@ -99,6 +105,13 @@ body {
   display: none;
   font-size: 2rem;
   cursor: pointer;
+  color: #000; 
+  }
+  /* Su mobile lo mostri */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
 }
 
 /* Nav-links di default su mobile: nascosti */
@@ -388,7 +401,7 @@ body {
     .nav-links {
       display: none;
       flex-direction: column;
-      background-color: #fff8e5;
+      background-color: #ffc625;
       position: absolute;
       top: 70px;
       right: 20px;
@@ -403,7 +416,7 @@ body {
     }
   
     .nav-links li a {
-      color: #222;
+      color: #000;
       font-weight: 600;
       padding: 0.7rem 0;
     }
