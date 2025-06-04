@@ -380,16 +380,39 @@ body {
 
 
 @media screen and (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    padding: 1rem;
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: block;
+    }
+  
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      background-color: #fff8e5;
+      position: absolute;
+      top: 70px;
+      right: 20px;
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 1000;
+    }
+  
+    .nav-links.show {
+      display: flex;
+    }
+  
+    .nav-links li a {
+      color: #222;
+      font-weight: 600;
+      padding: 0.7rem 0;
+    }
+  
+    .logo img {
+      height: 36px;
+    }
   }
-
-  .navbar ul {
-    flex-direction: column;
-    gap: 1rem;
-    align-items: center;
-  }
+  
 
   .hero-button-wrapper {
     top: 85%; /* più in basso su schermi piccoli */
@@ -426,5 +449,72 @@ body {
 
   .logo img {
     height: 30px;
+  }
+}
+/* NAVBAR BASE */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2rem;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+/* LOGO */
+.logo img {
+  max-height: 40px;
+}
+
+/* MENU TOGGLE (hamburger) */
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: white; /* Cambia se vuoi nero */
+}
+
+/* DESKTOP NAVIGATION LINKS */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: white; /* Colore desktop */
+  font-weight: 600;
+}
+
+/* MOBILE STYLES */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #fff8e5; /* colore coerente con Ainana */
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    z-index: 998;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links li a {
+    color: #333;
+    font-weight: 600;
+    padding: 0.5rem 0;
   }
 }
