@@ -26,6 +26,7 @@
     
     #funzionalita h2 {
       font-size: 2.6rem; /* oppure 3rem se vuoi un impatto maggiore */
+      margin-bottom: 1.5rem; /* Aggiunge spazio sotto il titolo */
     }
     
     h2 {
@@ -35,7 +36,12 @@
     #funzionalita .intro {
       font-size: 1.5rem;
     }
-    
+    #funzionalita .features {
+      margin-top: 2rem; /* Spazio tra intro e le box */
+    }
+    #funzionalita {
+      padding-top: 4rem; /* Spazio sopra tutta la sezione */
+    }
     #funzionalita .feature h3 {
       font-size: 1.3rem;
     }
