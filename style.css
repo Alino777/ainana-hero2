@@ -427,7 +427,7 @@
       }
 
       .hero {
-        height: calc(90vh - 55px); /* o l'altezza attuale */
+        height: calc(50vh - 55px); /* o l'altezza attuale */
         display: flex;
         align-items: flex-start; /* Alza il contenuto */
         justify-content: center;
