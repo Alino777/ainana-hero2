@@ -82,7 +82,8 @@
 
     .hero {
       position: relative;
-      height: 100vh; /* Altezza a pieno schermo */
+      width: 100%;
+      height: 100vh;
       margin: 0;
       padding: 0;
       overflow: hidden;
@@ -90,18 +91,30 @@
       align-items: center;
       justify-content: center;
       text-align: center;
+      box-sizing: border-box;
     }
     
     .bg-video {
       position: absolute;
       top: 0;
       left: 0;
-      width: 100vw;
-      height: 100vh;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
       object-fit: cover;
       z-index: -1;
+    }
+    🔒 Aggiunta importante al tuo CSS globale:
+    Per evitare margini imprevisti su tutto il documento:
+    
+    css
+    Copia
+    Modifica
+    html, body {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
 
@@ -502,7 +515,12 @@
             height: calc(100vh - 55px);
         }
         .bg-video {
-          height: 100vh;
+          min-width: 100%;
+          min-height: 100%;
+          width: auto;
+          height: auto;
+          object-fit: cover;
+        }
         }
         .hero-button-wrapper {
             top: 70%;
