@@ -171,197 +171,191 @@
     }
 
 
-    /* Features Section */
-    .features {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-      margin-top: 2rem;
-    }
+   
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
 
-    .feature {
-      background-color: #fff9e1;
-      padding: 1.5rem; /* Leggermente ridotto padding */
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      width: 280px; /* Larghezza fissa, considera max-width per responsività */
-      transition: transform 0.3s ease, box-shadow 0.3s ease, height 0.3s ease; /* Aggiunto height alla transizione */
-      cursor: pointer;
-      overflow: hidden;
-      position: relative;
-      height: auto; /* Altezza automatica di base */
-      min-height: 150px; /* Altezza minima per allineamento */
-    }
-    .feature h3 {
-        font-size: 1.1rem;
-        margin-bottom: 0.5rem;
-    }
+.feature {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  max-width: 300px;
+}
 
-    .feature p {
-      opacity: 1; /* Visibile di default, l'effetto hover lo gestiamo diversamente se necessario */
-      /* transition: opacity 0.3s ease; Rimosso se non c'è un effetto specifico di opacità */
-      margin-top: 0.5rem; /* Ridotto margin top */
-      font-size: 0.9rem; /* Leggermente ridotto */
-      line-height: 1.5;
-      font-weight: 300; /* Adattato per Inter */
-    }
+.features {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 
-    .feature:hover {
-      transform: scale(1.03); /* Leggermente ridotto lo scale */
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Leggermente aggiustata l'ombra */
-    }
+.feature {
+  background-color: #fff9e1;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 280px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  height: 150px;
+}
 
-    /* Se vuoi mantenere l'effetto di "apertura" al click/hover, dovrai usare JS per aggiungere/rimuovere la classe 'active' */
-    .feature.active {
-      /* height: auto; Già di default */
-      transform: scale(1.05);
-      background-color: #fff3bf;
-    }
-    .feature.active p {
-      opacity: 1;
-    }
+.feature:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.feature p {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+.feature:hover p,
+.feature.active p {
+  opacity: 1;
+}
+
+.feature.active {
+  height: auto;
+  transform: scale(1.08);
+  background-color: #fff3bf;
+}
+
+.letter-wrapper {
+  position: relative; /* ← AGGIUNGI QUESTA */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.envelope {
+  position: relative;
+  background: #ffe47a;
+  border: 3px solid #2b200f;
+  border-radius: 16px;
+  padding: 2.5rem 1rem 1.5rem;
+  width: 300px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
 
 
-    /* Demo Section */
-    .video-wrapper {
-      max-width: 700px;
-      margin: 0 auto; /* Centra il wrapper */
-    }
-    .video-wrapper iframe {
-      width: 100%;
-      height: 400px; /* Altezza di base per desktop */
-      border-radius: 12px;
-      border: none; /* Rimuove il bordo di default dell'iframe se presente */
-    }
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: #ffe78a;
+  border-bottom: 3px solid #3c2c14;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  transform-origin: top center;
+  transition: transform 0.3s ease;
+  z-index: 2;
+}
 
-    /* Form Section */
-    #form.section { /* Aggiunta specificità per #form */
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
+.envelope.open .envelope-flap {
+  transform: rotateX(70deg);
+}
 
-    .letter-wrapper {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      margin-top: 20px;
-    }
+.email-input {
+  margin-top: 10px;
+  border: none;
+  background: #fff9e3;
+  padding: 0.8rem 1rem;
+  width: 85%;
+  border-radius: 12px;
+  font-size: 1rem;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+  outline: none;
+  z-index: 1;
+  position: relative;
+}
 
-    .envelope {
-      position: relative;
-      background: #ffe47a;
-      border: 3px solid #2b200f;
-      border-radius: 16px;
-      padding: 2.5rem 1rem 1.5rem;
-      width: 300px;
-      text-align: center;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
+.face {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 10px;
+}
 
-    .envelope-flap {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 40px;
-      background: #ffe78a;
-      border-bottom: 3px solid #3c2c14;
-      border-top-left-radius: 12px;
-      border-top-right-radius: 12px;
-      transform-origin: top center;
-      transition: transform 0.3s ease;
-      z-index: 2;
-    }
+.eye {
+  width: 12px;
+  height: 12px;
+  background: #3c2c14;
+  border-radius: 50%;
+}
 
-    .envelope.open .envelope-flap {
-      transform: rotateX(70deg);
-    }
+.mouth {
+  width: 14px;
+  height: 14px;
+  background: #2b200f;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
 
-    .email-input {
-      margin-top: 10px;
-      border: none;
-      background: #fff9e3;
-      padding: 0.8rem 1rem;
-      width: 85%;
-      border-radius: 12px;
-      font-size: 1rem;
-      box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
-      outline: none;
-      z-index: 1;
-      position: relative;
-      font-family: 'Inter', sans-serif; /* Assicura che l'input usi Inter */
-    }
+.mouth.smile {
+  width: 30px;
+  height: 15px;
+  background: transparent;
+  border-bottom: 4px solid #2b200f;
+  border-radius: 0 0 30px 30px;
+}
 
-    .face {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      margin-top: 10px;
-    }
 
-    .eye {
-      width: 12px;
-      height: 12px;
-      background: #3c2c14;
-      border-radius: 50%;
-    }
+.stamp-button {
+  background: #ffc85c;
+  border: 3px dashed #3c2c14;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  padding: 0.7rem 1.4rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: bold;
+}
 
-    .mouth {
-      width: 14px;
-      height: 14px;
-      background: #2b200f;
-      border-radius: 50%;
-      transition: all 0.2s ease;
-    }
+.stamp-button:hover {
+  background: #ffdd85;
+  transform: scale(1.05);
+}
 
-    .mouth.smile {
-      width: 30px;
-      height: 15px;
-      background: transparent;
-      border-bottom: 4px solid #2b200f;
-      border-radius: 0 0 30px 30px;
-    }
+#form.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-    .stamp-button {
-      background: #ffc85c;
-      border: 3px dashed #3c2c14;
-      border-radius: 12px;
-      font-size: 1.2rem;
-      padding: 0.7rem 1.4rem;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      font-weight: 600; /* MODIFICATO per Inter */
-      font-family: 'Inter', sans-serif; /* Assicura che il bottone usi Inter */
-    }
+.confetti {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: red;
+  animation: fall 0.4s ease-out forwards;
+  border-radius: 50%;
+  opacity: 0.8;
+  z-index: 10;
+}
 
-    .stamp-button:hover {
-      background: #ffdd85;
-      transform: scale(1.05);
-    }
-
-    .confetti {
-      position: absolute;
-      width: 6px;
-      height: 6px;
-      /* background: red; Rimossa per usare colore casuale da JS */
-      animation: fall 0.4s ease-out forwards;
-      border-radius: 50%;
-      opacity: 0.8;
-      z-index: 10; /* Assicurati che sia sopra altri elementi nel letter-wrapper */
-    }
-
-    @keyframes fall {
-      to {
-        transform: translateY(60px) rotate(360deg);
-        opacity: 0;
-      }
-    }
+@keyframes fall {
+  to {
+    transform: translateY(60px) rotate(360deg);
+    opacity: 0;
+  }
+}
 
     /* Social Section */
     #social a {
