@@ -24,6 +24,10 @@
       font-family: 'Inter', sans-serif;
     }
     
+    #funzionalita h2 {
+      font-size: 2.6rem; /* oppure 3rem se vuoi un impatto maggiore */
+    }
+    
     h2 {
       font-size: 2.6rem; /* Un valore di base, puoi aggiustarlo nelle media query se serve */
       font-weight: 600; /* Aggiunto per coerenza con Inter */
