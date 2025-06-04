@@ -14,21 +14,29 @@
       <source src="media/ainana-hero-landing.mp4" type="video/mp4" />
       Il tuo browser non supporta i video HTML5.
     </video>
-    
+
     <div class="hero-button-wrapper">
       <a href="#form" class="hero-button">🚀 Richiedi accesso</a>
     </div>
     
   
     <nav class="navbar">
-      <div class="logo"><img src="media/logo.png" alt="Logo Ainana" /></div>
-      <ul>
-        <li><a href="#funzionalita">Cosa fa Ainana</a></li>
-        <li><a href="#demo">Guarda la Demo</a></li>
-        <li><a href="#form">Iscriviti</a></li>
-        <li><a href="#social">Seguici</a></li>
-      </ul>
-    </nav>
+  <div class="logo">
+    <img src="media/logo.png" alt="Logo Ainana" />
+  </div>
+
+  <div class="menu-toggle" id="menu-toggle">
+    ☰
+  </div>
+
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#funzionalita">Cosa fa Ainana</a></li>
+    <li><a href="#demo">Guarda la Demo</a></li>
+    <li><a href="#form">Iscriviti</a></li>
+    <li><a href="#social">Seguici</a></li>
+  </ul>
+</nav>
+
   </header>
 
   <section id="funzionalita" class="section">
@@ -156,6 +164,14 @@
       btn.style.backgroundColor = "#ffc85c";
     }, 2000);
   }
+</script>
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const navLinks = document.getElementById('nav-links');
+
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+  });
 </script>
 
 </body>

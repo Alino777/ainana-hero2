@@ -72,28 +72,71 @@ body {
 
 .hero-button-wrapper {
   position: absolute;
-  top: 75%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 2;
-  text-align: center;
+  z-index: 10;
 }
 
 .hero-button {
-  background-color: #ffc625;
-  color: black;
-  padding: 1rem 2rem;
+  background-color: #ffc85c;
+  padding: 12px 24px;
+  border-radius: 999px;
+  color: #000;
   font-weight: 600;
-  font-size: 1.2rem;
-  border-radius: 12px;
   text-decoration: none;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  transition: all 0.2s ease-in-out;
+  font-size: 1rem;
+  transition: background 0.3s ease;
 }
 
 .hero-button:hover {
-  background-color: #ffd84a;
-  transform: scale(1.05);
+  background-color: #f5b800;
+}
+
+
+/* Nasconde l’hamburger su desktop */
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* Nav-links di default su mobile: nascosti */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+/* Mobile: stack verticale */
+@media (max-width: 768px) {
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background: #fff;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    z-index: 999;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
 }
 
 .navbar a {
