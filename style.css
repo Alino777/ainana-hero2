@@ -105,9 +105,10 @@ body {
   display: none;
   font-size: 2rem;
   cursor: pointer;
-  color: #000; 
-  }
-  /* Su mobile lo mostri */
+  color: #000;
+}
+
+/* Mostra l’hamburger solo su mobile */
 @media (max-width: 768px) {
   .menu-toggle {
     display: block;
@@ -525,6 +526,10 @@ body {
     padding: 1rem;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  .nav-links {
+    display: none;
+    /* altri stili */
   }
 
   .nav-links.show {
