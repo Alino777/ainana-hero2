@@ -25,7 +25,7 @@
     }
     
     h2 {
-      font-size: 2rem; /* Un valore di base, puoi aggiustarlo nelle media query se serve */
+      font-size: 2.6rem; /* Un valore di base, puoi aggiustarlo nelle media query se serve */
       font-weight: 600; /* Aggiunto per coerenza con Inter */
     }
 
@@ -155,7 +155,7 @@
     .section .intro {
       max-width: 700px;
       margin: 0 auto 2.5rem auto; /* Leggermente ridotto margin bottom */
-      font-size: 1.2rem; /* Adattato per leggibilità */
+      font-size: 1.5rem; /* Adattato per leggibilità */
       line-height: 1.7;
       color: #333;
       font-weight: 300; /* Adattato per Inter */
