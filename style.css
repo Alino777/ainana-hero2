@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -12,45 +13,50 @@
     /* Reset e Stili Generali */
     body {
       margin: 0;
-      font-family: 'Inter', Arial, sans-serif; /* Assicurato Inter e aggiunto fallback generico */
+      font-family: 'Inter', sans-serif; /* MODIFICATO FONT */
       background: #fffceb;
       scroll-behavior: smooth;
-      padding-top: 70px; /* Altezza della navbar fissa */
+      /* Per evitare che il contenuto vada sotto la navbar fissa */
+      padding-top: 70px; /* Regola questo valore in base all'altezza effettiva della tua navbar */
     }
 
+    body, h1, h2, h3, p, a, button, input {
+      font-family: 'Inter', sans-serif;
+    }
+    
     h2 {
-      font-size: 2rem;
-      font-weight: 600;
+      font-size: 2rem; /* Un valore di base, puoi aggiustarlo nelle media query se serve */
+      font-weight: 600; /* Aggiunto per coerenza con Inter */
     }
 
     h3 {
-      font-weight: 600;
+        font-weight: 600; /* Aggiunto per coerenza con Inter */
     }
 
     /* Navbar */
     .navbar {
       position: fixed;
       top: 0;
-      left: 0;
+      left: 0; /* Aggiunto per assicurare che parta da sinistra */
       width: 100%;
       background-color: #ffc625;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1rem 2rem;
+      padding: 1rem 2rem; /* Padding orizzontale per distanziare dai bordi */
       z-index: 1000;
-      box-sizing: border-box;
-      height: 70px; /* Definita altezza esplicita per coerenza con padding-top del body */
+      box-sizing: border-box; /* Per includere padding e border nel width/height totale */
     }
 
     .logo img {
       height: 40px;
-      display: block;
+      display: block; /* Per evitare spazi extra sotto l'immagine */
     }
 
+    /* Links di navigazione per Desktop */
     .nav-links {
       list-style: none;
-      display: flex;
+      display: flex; /* Visibile e in linea su desktop */
       gap: 2rem;
       margin: 0;
       padding: 0;
@@ -59,51 +65,50 @@
     .nav-links li a {
       text-decoration: none;
       color: #000;
-      font-weight: 600;
+      font-weight: 600; /* MODIFICATO per Inter */
       font-size: 1rem;
-      padding: 0.5rem 0;
+      padding: 0.5rem 0; /* Aggiunto padding per migliore cliccabilità */
     }
 
+    /* Menu Toggle (Hamburger Icon) - Nascosto su Desktop */
     .menu-toggle {
-      display: none;
-      font-size: 1.8rem;
+      display: none; /* Nascosto di default */
+      font-size: 1.8rem; /* Leggermente ridotto per estetica */
       cursor: pointer;
       color: #000;
-      background: none;
-      border: none;
+      background: none; /* Rimuove sfondo di default se fosse un bottone */
+      border: none; /* Rimuove bordo di default se fosse un bottone */
     }
 
     /* Hero Section */
     .hero {
       position: relative;
-      height: calc(100vh - 70px); /* Altezza navbar sottratta */
+      /* Altezza meno l'altezza della navbar per evitare che la navbar copra parte del video all'inizio */
+      height: calc(100vh - 70px);
       overflow: hidden;
       color: white;
       text-align: center;
-      background-color: #000; /* Sfondo nero per evitare flash bianchi o bordi se il video non copre perfettamente */
+      /* margin-top: 70px; Rimosso perché abbiamo aggiunto padding-top al body */
     }
 
-    .bg-video {
-      position: absolute;
-      top: 50%; /* Centra verticalmente */
-      left: 50%; /* Centra orizzontalmente */
-      min-width: 100%; /* Assicura che copra almeno tutta la larghezza */
-      min-height: 100%; /* Assicura che copra almeno tutta l'altezza */
-      width: auto;   /* Mantiene le proporzioni */
-      height: auto;  /* Mantiene le proporzioni */
-      transform: translate(-50%, -50%); /* Sposta il video per centrarlo */
-      object-fit: cover; /* Copre l'area mantenendo le proporzioni, potrebbe tagliare i lati */
-      z-index: 0; /* Messo dietro il contenuto dell'hero */
-      opacity: 0.8;
-      display: block; /* Rimuove eventuale spazio sotto il video */
-    }
+  .bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 0.85;
+}
+
 
     .hero-button-wrapper {
       position: absolute;
-      top: 60%; /* Posizionamento del bottone */
+      top: 75%;
       left: 50%;
       transform: translate(-50%, -50%);
-      z-index: 1; /* Assicura che sia sopra il video */
+      z-index: 10;
     }
 
     .hero-button {
@@ -123,24 +128,37 @@
 
     /* Sections Generali */
     .section {
-      padding: 4rem 2rem;
+      padding: 4rem 2rem; /* Ridotto padding verticale per coerenza */
       text-align: center;
       background-color: white;
     }
 
     .section .intro {
       max-width: 700px;
-      margin: 0 auto 2.5rem auto;
-      font-size: 1.2rem;
+      margin: 0 auto 2.5rem auto; /* Leggermente ridotto margin bottom */
+      font-size: 1.2rem; /* Adattato per leggibilità */
       line-height: 1.7;
       color: #333;
-      font-weight: 300;
+      font-weight: 300; /* Adattato per Inter */
     }
 
-    #funzionalita.section { background-color: white; }
-    #demo.section { background-color: #fdf6d7; }
-    #form.section { background-color: white; }
-    #social.section { background-color: #fdf6d7; }
+    .section:nth-child(even) { /* Questo potrebbe cambiare se aggiungi/rimuovi sezioni prima di quelle stilizzate */
+      background-color: #fdf6d7;
+    }
+    /* Specifico per la sezione "Cosa fa Ainana" che è la prima section dopo l'hero */
+    #funzionalita.section {
+        background-color: white; /* Assicura che la prima sia bianca */
+    }
+    #demo.section {
+        background-color: #fdf6d7; /* La seconda con sfondo alternato */
+    }
+    #form.section {
+        background-color: white; /* La terza di nuovo bianca */
+    }
+     #social.section {
+        background-color: #fdf6d7; /* La quarta con sfondo alternato */
+    }
+
 
     /* Features Section */
     .features {
@@ -153,55 +171,67 @@
 
     .feature {
       background-color: #fff9e1;
-      padding: 1.5rem;
+      padding: 1.5rem; /* Leggermente ridotto padding */
       border-radius: 12px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      width: 280px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease, height 0.3s ease;
+      width: 280px; /* Larghezza fissa, considera max-width per responsività */
+      transition: transform 0.3s ease, box-shadow 0.3s ease, height 0.3s ease; /* Aggiunto height alla transizione */
       cursor: pointer;
       overflow: hidden;
       position: relative;
-      height: auto;
-      min-height: 150px;
+      height: auto; /* Altezza automatica di base */
+      min-height: 150px; /* Altezza minima per allineamento */
     }
     .feature h3 {
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
     }
+
     .feature p {
-      margin-top: 0.5rem;
-      font-size: 0.9rem;
+      opacity: 1; /* Visibile di default, l'effetto hover lo gestiamo diversamente se necessario */
+      /* transition: opacity 0.3s ease; Rimosso se non c'è un effetto specifico di opacità */
+      margin-top: 0.5rem; /* Ridotto margin top */
+      font-size: 0.9rem; /* Leggermente ridotto */
       line-height: 1.5;
-      font-weight: 300;
+      font-weight: 300; /* Adattato per Inter */
     }
+
     .feature:hover {
-      transform: scale(1.03);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      transform: scale(1.03); /* Leggermente ridotto lo scale */
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Leggermente aggiustata l'ombra */
     }
+
+    /* Se vuoi mantenere l'effetto di "apertura" al click/hover, dovrai usare JS per aggiungere/rimuovere la classe 'active' */
     .feature.active {
+      /* height: auto; Già di default */
       transform: scale(1.05);
       background-color: #fff3bf;
     }
+    .feature.active p {
+      opacity: 1;
+    }
+
 
     /* Demo Section */
     .video-wrapper {
       max-width: 700px;
-      margin: 0 auto;
+      margin: 0 auto; /* Centra il wrapper */
     }
     .video-wrapper iframe {
       width: 100%;
-      height: 400px;
+      height: 400px; /* Altezza di base per desktop */
       border-radius: 12px;
-      border: none;
+      border: none; /* Rimuove il bordo di default dell'iframe se presente */
     }
 
     /* Form Section */
-    #form.section {
+    #form.section { /* Aggiunta specificità per #form */
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
     }
+
     .letter-wrapper {
       position: relative;
       display: flex;
@@ -210,6 +240,7 @@
       gap: 20px;
       margin-top: 20px;
     }
+
     .envelope {
       position: relative;
       background: #ffe47a;
@@ -221,6 +252,7 @@
       transition: all 0.3s ease;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
+
     .envelope-flap {
       position: absolute;
       top: 0;
@@ -235,7 +267,11 @@
       transition: transform 0.3s ease;
       z-index: 2;
     }
-    .envelope.open .envelope-flap { transform: rotateX(70deg); }
+
+    .envelope.open .envelope-flap {
+      transform: rotateX(70deg);
+    }
+
     .email-input {
       margin-top: 10px;
       border: none;
@@ -248,20 +284,23 @@
       outline: none;
       z-index: 1;
       position: relative;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Inter', sans-serif; /* Assicura che l'input usi Inter */
     }
+
     .face {
       display: flex;
       justify-content: space-around;
       align-items: center;
       margin-top: 10px;
     }
+
     .eye {
       width: 12px;
       height: 12px;
       background: #3c2c14;
       border-radius: 50%;
     }
+
     .mouth {
       width: 14px;
       height: 14px;
@@ -269,6 +308,7 @@
       border-radius: 50%;
       transition: all 0.2s ease;
     }
+
     .mouth.smile {
       width: 30px;
       height: 15px;
@@ -276,6 +316,7 @@
       border-bottom: 4px solid #2b200f;
       border-radius: 0 0 30px 30px;
     }
+
     .stamp-button {
       background: #ffc85c;
       border: 3px dashed #3c2c14;
@@ -284,111 +325,214 @@
       padding: 0.7rem 1.4rem;
       cursor: pointer;
       transition: all 0.2s ease;
-      font-weight: 600;
-      font-family: 'Inter', sans-serif;
+      font-weight: 600; /* MODIFICATO per Inter */
+      font-family: 'Inter', sans-serif; /* Assicura che il bottone usi Inter */
     }
+
     .stamp-button:hover {
       background: #ffdd85;
       transform: scale(1.05);
     }
+
     .confetti {
       position: absolute;
       width: 6px;
       height: 6px;
+      /* background: red; Rimossa per usare colore casuale da JS */
       animation: fall 0.4s ease-out forwards;
       border-radius: 50%;
       opacity: 0.8;
-      z-index: 10;
+      z-index: 10; /* Assicurati che sia sopra altri elementi nel letter-wrapper */
     }
+
     @keyframes fall {
-      to { transform: translateY(60px) rotate(360deg); opacity: 0; }
+      to {
+        transform: translateY(60px) rotate(360deg);
+        opacity: 0;
+      }
     }
 
     /* Social Section */
     #social a {
-      text-decoration: none;
-      color: #c79b00;
-      font-weight: 600;
-      margin: 0 0.5rem;
+        text-decoration: none;
+        color: #c79b00; /* Un colore che si abbini alla palette */
+        font-weight: 600; /* MODIFICATO per Inter */
+        margin: 0 0.5rem;
     }
-    #social a:hover { text-decoration: underline; }
+    #social a:hover {
+        text-decoration: underline;
+    }
+
 
     /* Media Query per Tablet e Mobile */
     @media (max-width: 768px) {
-      body { padding-top: 60px; } /* Altezza navbar mobile */
-      .navbar {
-        padding: 0.8rem 1rem;
-        height: 60px; /* Altezza navbar mobile */
+      body {
+        padding-top: 60px; /* Adatta al possibile cambio di altezza navbar */
       }
-      .logo img { height: 30px; }
+      .navbar {
+        padding: 0.8rem 1rem; /* Padding ridotto su mobile */
+      }
+      .logo img {
+        height: 30px; /* Logo più piccolo su mobile */
+      }
+
       .nav-links {
-        display: none;
+        display: none; /* Nascosti di default su mobile */
         flex-direction: column;
         position: absolute;
-        top: 60px; /* Deve corrispondere all'altezza della navbar mobile */
-        right: 1rem;
-        background-color: #ffc625;
+        top: 60px; /* Altezza della navbar, assicurati che corrisponda */
+        right: 1rem; /* Allineato a destra con un po' di spazio */
+        background-color: #ffc625; /* Stesso colore della navbar */
         padding: 1rem;
-        border-radius: 8px;
+        border-radius: 8px; /* Angoli arrotondati per il menu dropdown */
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        width: auto;
-        min-width: 180px;
+        width: auto; /* Larghezza automatica basata sul contenuto */
+        min-width: 180px; /* Larghezza minima per leggibilità */
       }
-      .nav-links.show { display: flex; }
-      .nav-links li { margin: 0; width: 100%; }
+
+      .nav-links.show {
+        display: flex; /* Mostra i link quando la classe .show è presente */
+      }
+
+      .nav-links li {
+        margin: 0; /* Rimuove margini laterali dei li */
+        width: 100%; /* Occupa tutta la larghezza del dropdown */
+      }
+
       .nav-links li a {
-        padding: 0.8rem 1rem;
-        display: block;
-        text-align: left;
+        padding: 0.8rem 1rem; /* Padding per ogni link nel dropdown */
+        display: block; /* Per far sì che il padding si applichi correttamente e occupi larghezza */
+        text-align: left; /* Allinea testo a sinistra nel dropdown */
         font-size: 0.95rem;
-        font-weight: 400;
+        font-weight: 400; /* Adattato per Inter nel menu mobile */
       }
-      .nav-links li a:hover { background-color: #f5b800; border-radius: 4px; }
-      .menu-toggle { display: block; }
-      .hero { height: calc(100vh - 60px); } /* Altezza navbar mobile sottratta */
-      .hero-button-wrapper { top: 65%; width: 80%; }
-      .hero-button { font-size: 0.9rem; padding: 10px 20px; }
-      .section { padding: 3rem 1rem; }
-      .section .intro { font-size: 1rem; padding: 0 0.5rem; }
-      h2 { font-size: 1.5rem; }
-      .features { flex-direction: column; align-items: center; gap: 1.5rem; }
-      .feature { width: 90%; max-width: 350px; min-height: auto; padding: 1.2rem; }
-      .feature h3 { font-size: 1rem; }
-      .feature p { font-size: 0.85rem; }
-      .video-wrapper iframe { height: 250px; }
-      .envelope { width: 90%; max-width: 300px; }
-      .email-input { font-size: 0.9rem; }
-      .stamp-button { font-size: 1rem; padding: 0.7rem 1.2rem; }
+      .nav-links li a:hover {
+          background-color: #f5b800; /* Sfondo al passaggio del mouse */
+          border-radius: 4px;
+      }
+
+      .menu-toggle {
+        display: block; /* Mostra l'icona hamburger su mobile */
+      }
+
+      .hero {
+        height: calc(100vh - 60px); /* Adatta altezza hero */
+      }
+      .hero-button-wrapper {
+        top: 65%; /* Leggermente più in basso */
+        width: 80%; /* Per evitare che il bottone sia troppo largo */
+      }
+      .hero-button {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+        font-weight: 600; /* Assicura coerenza */
+      }
+
+      .section {
+        padding: 3rem 1rem; /* Padding ridotto per le sezioni */
+      }
+      .section .intro {
+        font-size: 1rem;
+        padding: 0 0.5rem; /* Padding laterale per l'intro */
+      }
+      h2 {
+        font-size: 1.5rem; /* Titoli più piccoli */
+      }
+
+      .features {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem; /* Gap ridotto */
+      }
+      .feature {
+        width: 90%; /* Larghezza maggiore su mobile */
+        max-width: 350px; /* Limita la larghezza massima */
+        min-height: auto; /* Rimuove altezza minima se non serve più per allineamento verticale */
+        padding: 1.2rem;
+      }
+       .feature h3 {
+        font-size: 1rem;
+      }
+      .feature p {
+        font-size: 0.85rem;
+      }
+
+
+      .video-wrapper iframe {
+        height: 250px; /* Altezza video ridotta su mobile */
+      }
+
+      .envelope {
+        width: 90%;
+        max-width: 300px; /* Mantiene la larghezza massima dell'envelope */
+      }
+      .email-input {
+        font-size: 0.9rem;
+      }
+      .stamp-button {
+        font-size: 1rem;
+        padding: 0.7rem 1.2rem;
+      }
     }
 
     @media (max-width: 480px) {
-      body { padding-top: 55px; } /* Altezza navbar schermi molto piccoli */
-      .navbar {
-        padding: 0.6rem 0.8rem;
-        height: 55px; /* Altezza navbar schermi molto piccoli */
-      }
-      .logo img { height: 25px; }
-      .menu-toggle { font-size: 1.6rem; }
-      .nav-links { top: 55px; right: 0.8rem; } /* Deve corrispondere all'altezza della navbar */
-      .nav-links li a { font-size: 0.9rem; }
-      .hero { height: calc(100vh - 55px); } /* Altezza navbar schermi molto piccoli sottratta */
-      .hero-button-wrapper { top: 70%; }
-      .hero-button { font-size: 0.85rem; padding: 9px 18px; }
-      h2 { font-size: 1.3rem; }
-      .section .intro { font-size: 0.95rem; }
-      .feature { width: 95%; }
+        body {
+            padding-top: 55px; /* Ancora più piccola la navbar */
+        }
+        .navbar {
+            padding: 0.6rem 0.8rem;
+        }
+        .logo img {
+            height: 25px;
+        }
+        .menu-toggle {
+            font-size: 1.6rem;
+        }
+        .nav-links {
+            top: 55px; /* Adatta alla nuova altezza navbar */
+            right: 0.8rem;
+        }
+        .nav-links li a {
+            font-size: 0.9rem;
+        }
+
+        .hero {
+            height: calc(100vh - 55px);
+        }
+        .hero-button-wrapper {
+            top: 70%;
+        }
+         .hero-button {
+            font-size: 0.85rem;
+            padding: 9px 18px;
+        }
+
+        h2 {
+            font-size: 1.3rem;
+        }
+        .section .intro {
+            font-size: 0.95rem;
+        }
+        .feature {
+            width: 95%;
+        }
     }
+
   </style>
 </head>
 <body>
 
 <nav class="navbar">
   <div class="logo">
-    <img src="https://assets-global.website-files.com/65f0455f314a5665d4f43223/65f0488079320fceaa744a0c_ainana_logo_wtext_horizontal.png" alt="Logo Ainana" />
+    <img src="https://assets-global.website-files.com/65f0455f314a5665d4f43223/65f0488079320fceaa744a0c_ainana_logo_wtext_horizontal.png" alt="Logo Ainana" /> <!-- Placeholder URL, sostituisci con il tuo vero logo -->
   </div>
+
+  <!-- Bottone Hamburger per Mobile -->
   <button class="menu-toggle" id="menu-toggle" aria-label="Apri menu" aria-expanded="false">
     <i class="fas fa-bars"></i>
   </button>
+
+  <!-- Link di Navigazione -->
   <ul class="nav-links" id="nav-links">
     <li><a href="#funzionalita">Cosa fa Ainana</a></li>
     <li><a href="#demo">Guarda la Demo</a></li>
@@ -399,9 +543,11 @@
 
 <header class="hero">
   <video autoplay muted loop playsinline class="bg-video">
+    <!-- Idealmente, fornisci anche un formato .webm per migliore compatibilità e compressione -->
     <source src="https://dl.dropboxusercontent.com/scl/fi/x09x91q9rg0f7btzpbvmy/ainana-hero-landing.mp4?rlkey=n30a5p8x0pcslh9l9z8qg0s1h&st=22j7y1a9&dl=0" type="video/mp4" />
     Il tuo browser non supporta i video HTML5.
   </video>
+
   <div class="hero-button-wrapper">
     <a href="#form" class="hero-button">🚀 Richiedi accesso</a>
   </div>
@@ -414,7 +560,7 @@
       Rende il supporto continuo, intelligente e più umano.
     </p>
     <div class="features">
-      <div class="feature" data-feature="1">
+      <div class="feature" data-feature="1"> <!-- Potresti usare JS per rendere questi interattivi -->
         <h3>🤖 Risponde ai dubbi dei pazienti in autonomia</h3>
         <p>Il chatbot AI risponde alle domande secondo le tue linee guida.</p>
       </div>
@@ -443,10 +589,14 @@
 
   <section id="form" class="section">
     <h2>Iscriviti alla lista d'attesa</h2>
-    <p class="intro">Ricevi in anteprima l'accesso al test privato.</p>
+    <p class="intro">Ricevi in anteprima l'accesso al test privato.</p> <!-- Usato .intro per coerenza -->
+
+    <!-- NOTA: formsubmit.co potrebbe non funzionare correttamente in alcuni ambienti di preview (come iframe). Testalo su un server live. -->
     <form action="https://formsubmit.co/ainana.app@gmail.com" method="POST" class="letter-wrapper">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://yourdomain.com/thankyou.html">
+      <!-- Per formsubmit.co, potresti voler aggiungere campi nascosti per il redirect o altro -->
+      <input type="hidden" name="_captcha" value="false"> <!-- Disabilita captcha di formsubmit (per test) -->
+      <input type="hidden" name="_next" value="https://yourdomain.com/thankyou.html"> <!-- Pagina di ringraziamento (opzionale) -->
+
       <div class="envelope">
         <div class="envelope-flap"></div>
         <input type="email" name="email" placeholder="La tua email" class="email-input" required onfocus="openEnvelope()" onblur="closeEnvelopeIfEmpty(event)" />
@@ -456,30 +606,35 @@
           <div class="eye"></div>
         </div>
       </div>
+      <!-- Cambiato type a "submit" per inviare il form. La logica JS gestirà l'animazione. -->
       <button type="submit" class="stamp-button" id="submit-button">📮 Iscriviti</button>
     </form>
   </section>
 
   <section id="social" class="section">
     <h2>Seguici</h2>
-    <p class="intro">Per non perdere novità, aggiornamenti e contenuti esclusivi:</p>
+    <p class="intro">Per non perdere novità, aggiornamenti e contenuti esclusivi:</p> <!-- Usato .intro per coerenza -->
     <a href="https://www.instagram.com/ainana.app/" target="_blank" rel="noopener noreferrer">Instagram</a> •
     <a href="https://www.linkedin.com/company/ainana" target="_blank" rel="noopener noreferrer">LinkedIn</a>
   </section>
 
+<!-- Libreria coriandoli -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.min.js"></script>
+
 <script>
   // Script per Menu Hamburger
   const menuToggle = document.getElementById('menu-toggle');
   const navLinks = document.getElementById('nav-links');
+
   menuToggle.addEventListener('click', () => {
     const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true' || false;
     navLinks.classList.toggle('show');
     menuToggle.setAttribute('aria-expanded', !isExpanded);
+    // Cambia icona se vuoi (opzionale)
     const icon = menuToggle.querySelector('i');
     if (navLinks.classList.contains('show')) {
       icon.classList.remove('fa-bars');
-      icon.classList.add('fa-times');
+      icon.classList.add('fa-times'); // Icona "X" quando aperto
     } else {
       icon.classList.remove('fa-times');
       icon.classList.add('fa-bars');
@@ -490,80 +645,117 @@
   const envelope = document.querySelector('.envelope');
   const emailInput = document.querySelector('.email-input');
   const submitButton = document.getElementById('submit-button');
-  const form = document.querySelector('.letter-wrapper');
+  const form = document.querySelector('.letter-wrapper'); // Seleziona il form
 
   function openEnvelope() {
     if (envelope) envelope.classList.add('open');
     const mouth = envelope ? envelope.querySelector('.mouth') : null;
     if (mouth) mouth.classList.remove('smile');
   }
+
   function closeEnvelope() {
     if (envelope) envelope.classList.remove('open');
   }
-  function closeEnvelopeIfEmpty(event) {
-    if (event.target.value.trim() === '') closeEnvelope();
-  }
-  if(emailInput) emailInput.addEventListener('blur', closeEnvelopeIfEmpty);
 
+  // Chiudi l'envelope solo se l'input è vuoto quando perde il focus
+  function closeEnvelopeIfEmpty(event) {
+    if (event.target.value.trim() === '') {
+      closeEnvelope();
+    }
+  }
+
+  // Aggiungi l'event listener per onblur all'input email
+  if(emailInput) {
+    emailInput.addEventListener('blur', closeEnvelopeIfEmpty);
+  }
+
+
+  // Gestione invio form e animazione
   if (form) {
     form.addEventListener('submit', function(event) {
+      // Non prevenire il default se vuoi che il form invii i dati a formsubmit.co
+      // event.preventDefault(); // Rimuovi o commenta questa riga se usi formsubmit.co
+
+      // Chiamiamo la funzione di animazione qui,
+      // l'invio del form avverrà naturalmente.
+      // Se usi AJAX per inviare il form, allora event.preventDefault() è necessario.
       animateSubmission();
     });
   }
 
   function animateSubmission() {
     const mouth = envelope ? envelope.querySelector('.mouth') : null;
+
     if (mouth) mouth.classList.add('smile');
     if (submitButton) {
       submitButton.innerText = "📤 Inviata!";
       submitButton.style.backgroundColor = "#d6f5a3";
-      submitButton.disabled = true;
+      submitButton.disabled = true; // Disabilita il bottone dopo l'invio
     }
 
-    for (let i = 0; i < 10; i++) {
+    // Animazione coriandoli custom (quella che avevi)
+    for (let i = 0; i < 10; i++) { // Aumentato numero coriandoli
       const confetto = document.createElement('div');
       confetto.classList.add('confetti');
       confetto.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
-      confetto.style.left = `${Math.random() * 100}%`;
-      confetto.style.top = `-10px`;
+      confetto.style.left = `${Math.random() * 100}%`; // Posizione orizzontale casuale
+      confetto.style.top = `-10px`; // Parte da sopra
+      // Assicurati che .letter-wrapper esista
       const letterWrapper = document.querySelector('.letter-wrapper');
       if (letterWrapper) {
           letterWrapper.appendChild(confetto);
-          setTimeout(() => confetto.remove(), 600);
+          setTimeout(() => confetto.remove(), 600); // Aumentato leggermente durata
       }
     }
 
+    // Coriandoli con la libreria canvas-confetti
     if (typeof confetti === 'function') {
-      const duration = 2000;
+      const duration = 2000; // 2 secondi
       const animationEnd = Date.now() + duration;
-      const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 1001 };
-      function randomInRange(min, max) { return Math.random() * (max - min) + min; }
+      const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 1001 }; // zIndex più alto
+
+      function randomInRange(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
       const interval = setInterval(function() {
         const timeLeft = animationEnd - Date.now();
-        if (timeLeft <= 0) return clearInterval(interval);
+        if (timeLeft <= 0) {
+          return clearInterval(interval);
+        }
         const particleCount = 50 * (timeLeft / duration);
         confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
         confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
       }, 250);
     }
 
+    // Reset bottone (questo avverrà anche se l'utente naviga via a causa dell'invio del form)
+    // Se vuoi che il reset avvenga solo se l'utente resta sulla pagina (es. con invio AJAX),
+    // allora questa logica va bene. Altrimenti, con formsubmit.co, l'utente verrà rediretto.
     setTimeout(() => {
       if (submitButton) {
         submitButton.innerText = "📮 Iscriviti";
         submitButton.style.backgroundColor = "#ffc85c";
-        submitButton.disabled = false;
+        submitButton.disabled = false; // Riabilita il bottone
       }
       if (mouth) mouth.classList.remove('smile');
-    }, 3000);
+      // Non chiudere l'envelope qui, l'utente potrebbe voler vedere la conferma
+    }, 3000); // Aumentato il timeout per dare tempo ai coriandoli
   }
 
-  // Feature click
+  // Feature click (opzionale, se vuoi espandere le feature al click)
   const features = document.querySelectorAll('.feature');
   features.forEach(feature => {
     feature.addEventListener('click', () => {
+      // Se vuoi che solo una feature sia attiva alla volta:
+      // features.forEach(f => f.classList.remove('active'));
+      // feature.classList.toggle('active');
+
+      // Se vuoi che più feature possano essere attive:
       feature.classList.toggle('active');
     });
   });
+
 </script>
 
 </body>
