@@ -1,17 +1,19 @@
 
+<!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ainana – AI per Nutrizionisti</title>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600&display=swap" rel="stylesheet" />
+  <!-- Google Font Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
   <!-- Font Awesome per icona hamburger -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     /* Reset e Stili Generali */
     body {
       margin: 0;
-      font-family: 'Outfit', sans-serif;
+      font-family: 'Inter', sans-serif; /* MODIFICATO FONT */
       background: #fffceb;
       scroll-behavior: smooth;
       /* Per evitare che il contenuto vada sotto la navbar fissa */
@@ -20,6 +22,11 @@
 
     h2 {
       font-size: 2rem; /* Un valore di base, puoi aggiustarlo nelle media query se serve */
+      font-weight: 600; /* Aggiunto per coerenza con Inter */
+    }
+
+    h3 {
+        font-weight: 600; /* Aggiunto per coerenza con Inter */
     }
 
     /* Navbar */
@@ -54,7 +61,7 @@
     .nav-links li a {
       text-decoration: none;
       color: #000;
-      font-weight: bold;
+      font-weight: 600; /* MODIFICATO per Inter */
       font-size: 1rem;
       padding: 0.5rem 0; /* Aggiunto padding per migliore cliccabilità */
     }
@@ -127,6 +134,7 @@
       font-size: 1.2rem; /* Adattato per leggibilità */
       line-height: 1.7;
       color: #333;
+      font-weight: 300; /* Adattato per Inter */
     }
 
     .section:nth-child(even) { /* Questo potrebbe cambiare se aggiungi/rimuovi sezioni prima di quelle stilizzate */
@@ -180,6 +188,7 @@
       margin-top: 0.5rem; /* Ridotto margin top */
       font-size: 0.9rem; /* Leggermente ridotto */
       line-height: 1.5;
+      font-weight: 300; /* Adattato per Inter */
     }
 
     .feature:hover {
@@ -270,6 +279,7 @@
       outline: none;
       z-index: 1;
       position: relative;
+      font-family: 'Inter', sans-serif; /* Assicura che l'input usi Inter */
     }
 
     .face {
@@ -310,7 +320,8 @@
       padding: 0.7rem 1.4rem;
       cursor: pointer;
       transition: all 0.2s ease;
-      font-weight: bold;
+      font-weight: 600; /* MODIFICATO per Inter */
+      font-family: 'Inter', sans-serif; /* Assicura che il bottone usi Inter */
     }
 
     .stamp-button:hover {
@@ -340,7 +351,7 @@
     #social a {
         text-decoration: none;
         color: #c79b00; /* Un colore che si abbini alla palette */
-        font-weight: 600;
+        font-weight: 600; /* MODIFICATO per Inter */
         margin: 0 0.5rem;
     }
     #social a:hover {
@@ -388,6 +399,7 @@
         display: block; /* Per far sì che il padding si applichi correttamente e occupi larghezza */
         text-align: left; /* Allinea testo a sinistra nel dropdown */
         font-size: 0.95rem;
+        font-weight: 400; /* Adattato per Inter nel menu mobile */
       }
       .nav-links li a:hover {
           background-color: #f5b800; /* Sfondo al passaggio del mouse */
@@ -408,6 +420,7 @@
       .hero-button {
         font-size: 0.9rem;
         padding: 10px 20px;
+        font-weight: 600; /* Assicura coerenza */
       }
 
       .section {
