@@ -45,8 +45,12 @@ body {
 
 @media (max-width: 768px) {
   .menu-toggle {
-    display: block;
+    display: block !important;
+    font-size: 2rem;
+    color: #000;
+    z-index: 2000;
   }
+}
 
   .nav-links {
     display: none;
