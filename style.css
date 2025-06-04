@@ -431,7 +431,7 @@
       }
       .hero-button-wrapper {
         position: absolute;
-        top: 60%;
+        top: 75%;
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: 10;
@@ -526,7 +526,7 @@ justify-content: center;
         }
         }
         .hero-button-wrapper {
-          top: 65%;
+          top: 75%;
           width: 100%;
           display: flex;
           justify-content: center;
