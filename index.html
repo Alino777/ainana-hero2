@@ -99,8 +99,8 @@
   <section id="form" class="section">
     <h2>Iscriviti alla lista d'attesa</h2>
     <p>Ricevi in anteprima l'accesso al test privato.</p>
-
-    <form action="https://formsubmit.co/ainana.app@gmail.com" method="POST" class="letter-wrapper">
+  
+    <form id="contact-form" action="https://formsubmit.co/ainana.app@gmail.com" method="POST" class="letter-wrapper">
       <div class="envelope">
         <div class="envelope-flap"></div>
         <input type="email" name="email" placeholder="La tua email" class="email-input" required onfocus="openEnvelope()" onblur="closeEnvelope()" />
@@ -110,7 +110,7 @@
           <div class="eye"></div>
         </div>
       </div>
-      <button type="button" class="stamp-button" onclick="sendEmail()">📮 Iscriviti</button>
+      <button type="submit" class="stamp-button">📮 Iscriviti</button>
     </form>
   </section>
 
@@ -133,24 +133,14 @@
   function closeEnvelope() {
     document.querySelector('.envelope').classList.remove('open');
   }
+
   function sendEmail() {
-  const btn = document.querySelector('.stamp-button');
-  btn.innerText = "📤 Inviata!";
-  btn.style.backgroundColor = "#d6f5a3";
+    const btn = document.querySelector('.stamp-button');
+    const mouth = document.querySelector('.mouth');
 
-  confetti({
-    particleCount: 150,
-    spread: 180,
-    origin: { y: 0.6 },
-    scalar: 1.2
-  });
-
-  setTimeout(() => {
-    btn.innerText = "📮 Iscriviti";
-    btn.style.backgroundColor = "#ffc85c";
-  }, 2000);
-}
-
+    mouth.classList.add('smile');
+    btn.innerText = "📤 Inviata!";
+    btn.style.backgroundColor = "#d6f5a3";
 
 
     // Effetto canvas su tutta la pagina
@@ -192,6 +182,60 @@
   menuToggle.addEventListener('click', () => {
     navLinks.classList.toggle('show');
   });
+</script>
+<script>
+  // ... (le tue funzioni openEnvelope e closeEnvelope rimangono invariate) ...
+
+  // Aggiungi un event listener al form
+  document.getElementById('contact-form').addEventListener('submit', function(event) {
+    // Previene l'invio immediato del form
+    event.preventDefault(); 
+    
+    // Esegui la tua animazione
+    playConfettiAnimation();
+
+    // Invia il form dopo un breve ritardo per dare tempo all'animazione di partire
+    setTimeout(() => {
+      this.submit();
+    }, 200); 
+  });
+
+  function playConfettiAnimation() {
+    const btn = document.querySelector('.stamp-button');
+    const mouth = document.querySelector('.mouth');
+
+    mouth.classList.add('smile');
+    btn.innerText = "📤 Inviata!";
+    btn.style.backgroundColor = "#d6f5a3";
+
+    const duration = 2000;
+    const animationEnd = Date.now() + duration;
+    const defaults = {
+      startVelocity: 30,
+      spread: 360,
+      ticks: 60,
+      zIndex: 9999,
+      scalar: 1.4
+    };
+
+    const interval = setInterval(function () {
+      const timeLeft = animationEnd - Date.now();
+      if (timeLeft <= 0) return clearInterval(interval);
+
+      confetti(Object.assign({}, defaults, {
+        particleCount: 10,
+        origin: {
+          x: Math.random(),
+          y: Math.random() - 0.2
+        }
+      }));
+    }, 150);
+
+    // Non c'è più bisogno del reset del bottone qui, 
+    // perché la pagina verrà ricaricata dopo l'invio.
+  }
+
+  // ... (il resto del tuo script per il menu toggle) ...
 </script>
 
 </body>
