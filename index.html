@@ -142,16 +142,6 @@
     btn.innerText = "📤 Inviata!";
     btn.style.backgroundColor = "#d6f5a3";
 
-    // Effetto DOM con coriandoli che escono dalla lettera
-    for (let i = 0; i < 25; i++) {
-      const confetto = document.createElement('div');
-      confetto.classList.add('confetti');
-      confetto.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
-      confetto.style.left = `${Math.random() * 100}%`;
-      confetto.style.top = `-10px`;
-      document.querySelector('.letter-wrapper').appendChild(confetto);
-      setTimeout(() => confetto.remove(), 500);
-    }
 
     // Effetto canvas su tutta la pagina
     const duration = 2000;
