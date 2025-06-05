@@ -1,199 +1,259 @@
-/* Reset e Stili Generali */
-html, body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-body {
-  font-family: 'Inter', sans-serif;
-  background: #fffceb;
-  scroll-behavior: smooth;
-  padding-top: 70px; /* Altezza della navbar fissa, regola se l'altezza della navbar cambia */
-}
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ainana – AI per Nutrizionisti</title>
+  <!-- Google Font Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome per icona hamburger -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* Reset e Stili Generali */
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif; /* MODIFICATO FONT */
+      background: #fffceb;
+      scroll-behavior: smooth;
+      /* Per evitare che il contenuto vada sotto la navbar fissa */
+      padding-top: 70px; /* Regola questo valore in base all'altezza effettiva della tua navbar */
+    }
 
-body, h1, h2, h3, p, a, button, input, li, ul { /* Assicura che Inter sia applicato a più elementi */
-  font-family: 'Inter', sans-serif;
-}
+    body, h1, h2, h3, p, a, button, input {
+      font-family: 'Inter', sans-serif;
+    }
+    
+    #funzionalita h2 {
+      font-size: 2.6rem; /* oppure 3rem se vuoi un impatto maggiore */
+      margin-bottom: 1.5rem; /* Aggiunge spazio sotto il titolo */
+    }
+    
+    h2 {
+      font-size: 2.6rem; /* Un valore di base, puoi aggiustarlo nelle media query se serve */
+      font-weight: 600; /* Aggiunto per coerenza con Inter */
+    }
+    #funzionalita .intro {
+      font-size: 1.5rem;
+    }
+    #funzionalita .features {
+      margin-top: 2rem; /* Spazio tra intro e le box */
+    }
+    #funzionalita {
+      padding-top: 4rem; /* Spazio sopra tutta la sezione */
+    }
+    #funzionalita .feature h3 {
+      font-size: 1.3rem;
+    }
+    
+    h3 {
+        font-weight: 600; /* Aggiunto per coerenza con Inter */
+    }
+    #demo h2 {
+      font-size: 2.6rem;
+      margin-bottom: 2rem; /* Aggiusta il valore a piacimento */
+    }
+    
+    canvas {
+      position: fixed !important;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 9999 !important;
+    }
+    
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0; /* Aggiunto per assicurare che parta da sinistra */
+      width: 100%;
+      background-color: #ffc625;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem; /* Padding orizzontale per distanziare dai bordi */
+      z-index: 1000;
+      box-sizing: border-box; /* Per includere padding e border nel width/height totale */
+    }
 
-h2 {
-  font-size: 2.6rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem; /* Spazio di default sotto gli h2 */
-}
+    .logo img {
+      height: 40px;
+      display: block; /* Per evitare spazi extra sotto l'immagine */
+    }
 
-h3 {
-  font-weight: 600;
-}
+    /* Links di navigazione per Desktop */
+    .nav-links {
+      list-style: none;
+      display: flex; /* Visibile e in linea su desktop */
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
 
-canvas { /* Stile per canvas, una sola definizione */
-  position: fixed !important; /* Considera di rimuovere !important se possibile */
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 9999 !important; /* Considera di rimuovere !important se possibile */
-}
+    .nav-links li a {
+      text-decoration: none;
+      color: #000;
+      font-weight: 600; /* MODIFICATO per Inter */
+      font-size: 1rem;
+      padding: 0.5rem 0; /* Aggiunto padding per migliore cliccabilità */
+    }
 
-/* Navbar */
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: #ffc625;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 2rem;
-  z-index: 1000;
-  box-sizing: border-box;
-  height: 70px; /* Altezza esplicita per coerenza con padding-top del body */
-}
+    /* Menu Toggle (Hamburger Icon) - Nascosto su Desktop */
+    .menu-toggle {
+      display: none; /* Nascosto di default */
+      font-size: 1.8rem; /* Leggermente ridotto per estetica */
+      cursor: pointer;
+      color: #000;
+      background: none; /* Rimuove sfondo di default se fosse un bottone */
+      border: none; /* Rimuove bordo di default se fosse un bottone */
+    }
 
-.logo img {
-  height: 40px;
-  display: block;
-}
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    
+    .bg-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
 
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 2rem;
-  margin: 0;
-  padding: 0;
-}
+    canvas {
+      position: fixed !important;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 9999 !important;
+    }
+    
+    html, body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .feature p {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .feature.active p {
+      opacity: 1;
+    }
+    css
+    Copia
+    Modifica
+    html, body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-.nav-links li a {
-  text-decoration: none;
-  color: #000;
-  font-weight: 600;
-  font-size: 1rem;
-  padding: 0.5rem 0;
-}
 
-.menu-toggle {
-  display: none;
-  font-size: 1.8rem;
-  cursor: pointer;
-  color: #000;
-  background: none;
-  border: none;
-}
+    .hero-button-wrapper {
+      position: absolute;
+      top: 80%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+    }
 
-/* Hero Section */
-.hero {
-  position: relative;
-  width: 100%;
-  /* height: 100vh; Se la navbar è fissa e occupa spazio, 100vh farà sì che l'hero sia più alto della finestra visibile */
-  height: calc(100vh - 70px); /* Sottrae l'altezza della navbar fissa */
-  margin: 0; /* margin-top: 70px; se body non ha padding-top e hero non è fixed */
-  padding: 0;
-  overflow: hidden;
-  background-color: #000; /* Fallback per il video e per evitare bordi */
-}
+    .hero-button {
+      background-color: #ffc85c;
+      padding: 16px 32px;
+      border-radius: 999px;
+      color: #000;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
 
-.bg-video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  transform: translate(-50%, -50%);
-  object-fit: cover;
-  z-index: 0; /* Dietro .hero-button-wrapper */
-  opacity: 0.8; /* Se vuoi un effetto più scuro */
-}
+    .hero-button:hover {
+      background-color: #f5b800;
+    }
 
-.hero-button-wrapper {
-  position: absolute;
-  top: 80%; /* Regola per la posizione verticale desiderata */
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1; /* Sopra il video */
-}
+    /* Sections Generali */
+    .section {
+      padding: 4rem 2rem; /* Ridotto padding verticale per coerenza */
+      text-align: center;
+      background-color: white;
+    }
 
-.hero-button {
-  background-color: #ffc85c;
-  padding: 16px 32px;
-  border-radius: 999px;
-  color: #000;
-  font-weight: 600;
-  text-decoration: none;
-  font-size: 1rem;
-  transition: background 0.3s ease;
-}
+    .section .intro {
+      max-width: 700px;
+      margin: 0 auto 2.5rem auto; /* Leggermente ridotto margin bottom */
+      font-size: 1.5rem; /* Adattato per leggibilità */
+      line-height: 1.7;
+      color: #333;
+      font-weight: 300; /* Adattato per Inter */
+    }
 
-.hero-button:hover {
-  background-color: #f5b800;
-}
+    .section:nth-child(even) { /* Questo potrebbe cambiare se aggiungi/rimuovi sezioni prima di quelle stilizzate */
+      background-color: #fdf6d7;
+    }
+    /* Specifico per la sezione "Cosa fa Ainana" che è la prima section dopo l'hero */
+    #funzionalita.section {
+        background-color: white; /* Assicura che la prima sia bianca */
+    }
+    #demo.section {
+        background-color: #fdf6d7; /* La seconda con sfondo alternato */
+    }
+    #form.section {
+        background-color: white; /* La terza di nuovo bianca */
+    }
+     #social.section {
+        background-color: #fdf6d7; /* La quarta con sfondo alternato */
+    }
 
-/* Sections Generali */
-.section {
-  padding: 4rem 2rem;
-  text-align: center;
-  background-color: white;
-}
 
-.section .intro {
-  max-width: 700px;
-  margin: 0 auto 2.5rem auto;
-  font-size: 1.5rem;
-  line-height: 1.7;
-  color: #333;
-  font-weight: 300;
-}
-
-/* Colori alternati per le sezioni */
-#funzionalita.section { background-color: white; }
-#demo.section { background-color: #fdf6d7; }
-#form.section { background-color: white; }
-#social.section { background-color: #fdf6d7; }
-
-/* Sezione Funzionalità Stili Specifici */
-#funzionalita {
-  padding-top: 4rem; /* Mantiene il padding specifico se diverso da .section generico */
-}
-/* #funzionalita h2 è già coperto da h2 generico, a meno di override specifici */
-#funzionalita .intro {
-  font-size: 1.5rem; /* Già definito in .section .intro, ridondante se uguale */
-}
-#funzionalita .features {
-  margin-top: 2rem; /* Spazio tra intro e le box, specifico per questa sezione */
-}
-#funzionalita .feature h3 {
-  font-size: 1.3rem;
-}
-
-/* Sezione Demo Stili Specifici */
-#demo h2 {
-  /* font-size: 2.6rem; Già coperto da h2 generico */
-  margin-bottom: 2rem;
-}
-
-/* Features (Consolidato) */
+   
 .features {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
   justify-content: center;
-  margin-top: 2rem; /* Default margin, può essere sovrascritto da #funzionalita .features */
+  margin-top: 2rem;
 }
 
 .feature {
-  background-color: #fff9e1; /* Seconda definizione sembrava più completa */
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  max-width: 400px;
+}
+
+.features {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.feature {
+  background-color: #fff9e1;
   padding: 2rem;
   border-radius: 12px;
   width: 320px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, height 0.3s ease; /* height transition aggiunta per .active */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
   overflow: hidden;
   position: relative;
-  height: 200px; /* Altezza fissa iniziale */
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  height: 200px;
 }
 
 .feature:hover {
@@ -213,15 +273,14 @@ canvas { /* Stile per canvas, una sola definizione */
   opacity: 1;
 }
 
-.feature.active { /* Quando una feature è attiva (es. via JS) */
-  height: auto; /* Permette all'altezza di espandersi per il contenuto */
-  transform: scale(1.08); /* Leggermente più grande quando attiva */
+.feature.active {
+  height: auto;
+  transform: scale(1.08);
   background-color: #fff3bf;
 }
 
-/* Form Section (Envelope) */
 .letter-wrapper {
-  position: relative;
+  position: relative; /* ← AGGIUNGI QUESTA */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -240,6 +299,7 @@ canvas { /* Stile per canvas, una sola definizione */
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
+
 
 .envelope-flap {
   position: absolute;
@@ -304,6 +364,7 @@ canvas { /* Stile per canvas, una sola definizione */
   border-radius: 0 0 30px 30px;
 }
 
+
 .stamp-button {
   background: #ffc85c;
   border: 3px dashed #3c2c14;
@@ -312,7 +373,7 @@ canvas { /* Stile per canvas, una sola definizione */
   padding: 0.7rem 1.4rem;
   cursor: pointer;
   transition: all 0.2s ease;
-  font-weight: bold; /* 'bold' è un valore valido, 600 è più specifico per Inter se vuoi coerenza */
+  font-weight: bold;
 }
 
 .stamp-button:hover {
@@ -320,23 +381,22 @@ canvas { /* Stile per canvas, una sola definizione */
   transform: scale(1.05);
 }
 
-#form.section { /* Assicura che la section del form si comporti come flex container se necessario */
+#form.section {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-/* Confetti (per animazione JS) */
 .confetti {
   position: absolute;
   width: 6px;
   height: 6px;
-  background: red; /* JS potrebbe sovrascrivere questo */
+  background: red;
   animation: fall 0.4s ease-out forwards;
   border-radius: 50%;
   opacity: 0.8;
-  z-index: 10; /* Assicurati che sia sopra altri elementi nel letter-wrapper */
+  z-index: 10;
 }
 
 @keyframes fall {
@@ -346,229 +406,202 @@ canvas { /* Stile per canvas, una sola definizione */
   }
 }
 
-/* Social Section */
-#social a {
-  text-decoration: none;
-  color: #c79b00;
-  font-weight: 600;
-  margin: 0 0.5rem;
-}
-#social a:hover {
-  text-decoration: underline;
-}
-
-/* === Media Queries === */
-
-/* Tablet e Mobile (max-width: 768px) */
-@media (max-width: 768px) {
-  body {
-    padding-top: 60px; /* Altezza navbar mobile */
-  }
-  .navbar {
-    padding: 0.8rem 1rem;
-    height: 60px; /* Altezza navbar mobile */
-  }
-  .logo img {
-    height: 30px;
-  }
-
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 60px; /* Corrisponde all'altezza della navbar mobile */
-    right: 1rem;
-    background-color: #ffc625;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    width: auto;
-    min-width: 180px;
-  }
-  .nav-links.show {
-    display: flex;
-  }
-  .nav-links li {
-    margin: 0;
-    width: 100%;
-  }
-  .nav-links li a {
-    padding: 0.8rem 1rem;
-    display: block;
-    text-align: left;
-    font-size: 0.95rem;
-    font-weight: 400; /* Più leggero per menu mobile */
-  }
-  .nav-links li a:hover {
-    background-color: #f5b800;
-    border-radius: 4px;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-
-  .hero {
-    height: calc(100vh - 60px); /* Sottrae altezza navbar mobile */
-    /* Non rimpicciolire il video qui se non vuoi che diventi più piccolo del contenitore hero */
-  }
-  /* Se vuoi rimpicciolire il video su mobile, come nella richiesta precedente: */
-  /*
-  .bg-video {
-    min-width: 0;
-    min-height: 0;
-    width: 90%;
-    height: 70%;
-    max-width: 100%;
-    max-height: 100%;
-  }
-  */
-
-  .hero-button-wrapper {
-    top: 75%; /* Regolato per mobile */
-    width: 90%; /* Bottone più stretto su mobile */
-    /* Le proprietà flex per centrare il bottone se il wrapper è 100% width: */
-    /* display: flex; */
-    /* justify-content: center; */
-  }
-  .hero-button {
-    font-size: 0.9rem;
-    padding: 12px 24px; /* Leggermente più piccolo */
-  }
-
-  .section {
-    padding: 3rem 1rem;
-  }
-  .section .intro {
-    font-size: 1.4rem; /* Mantenuto più grande su tablet */
-    padding: 0 0.5rem;
-  }
-  h2 { /* Titoli nelle sezioni su mobile */
-    font-size: 2.0rem; /* Leggermente ridotto rispetto al desktop 2.6rem */
-  }
-   #funzionalita h2, #demo h2 { /* Assicura che anche gli h2 con ID siano ridimensionati */
-    font-size: 2.0rem;
-  }
+    /* Social Section */
+    #social a {
+        text-decoration: none;
+        color: #c79b00; /* Un colore che si abbini alla palette */
+        font-weight: 600; /* MODIFICATO per Inter */
+        margin: 0 0.5rem;
+    }
+    #social a:hover {
+        text-decoration: underline;
+    }
 
 
-  .features {
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-  }
-  .feature {
-    width: 90%;
-    max-width: 380px; /* Aumentato leggermente per tablet */
-    min-height: auto; /* Permette altezza flessibile */
-    height: auto; /* Rimuove altezza fissa */
-    padding: 1.5rem; /* Padding consistente */
-  }
-  .feature h3 {
-    font-size: 1.2rem;
-  }
-  .feature p {
-    font-size: 1rem;
-    opacity: 1; /* Testo sempre visibile su mobile, senza hover */
-  }
+    /* Media Query per Tablet e Mobile */
+    @media (max-width: 768px) {
+      body {
+        padding-top: 60px; /* Adatta al possibile cambio di altezza navbar */
+      }
+      .navbar {
+        padding: 0.8rem 1rem; /* Padding ridotto su mobile */
+      }
+      .logo img {
+        height: 30px; /* Logo più piccolo su mobile */
+      }
 
-  .video-wrapper { /* Demo video iframe */
-    width: 90%;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  .video-wrapper iframe {
-    height: 300px; /* Adattato per tablet */
-    width: 100%;
-  }
+      .nav-links {
+        display: none; /* Nascosti di default su mobile */
+        flex-direction: column;
+        position: absolute;
+        top: 60px; /* Altezza della navbar, assicurati che corrisponda */
+        right: 1rem; /* Allineato a destra con un po' di spazio */
+        background-color: #ffc625; /* Stesso colore della navbar */
+        padding: 1rem;
+        border-radius: 8px; /* Angoli arrotondati per il menu dropdown */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        width: auto; /* Larghezza automatica basata sul contenuto */
+        min-width: 180px; /* Larghezza minima per leggibilità */
+      }
 
-  .envelope {
-    width: 90%;
-    max-width: 320px;
-  }
-  .email-input {
-    font-size: 0.9rem;
-  }
-  .stamp-button {
-    font-size: 1.1rem; /* Leggermente più grande */
-    padding: 0.8rem 1.5rem;
-  }
-}
+      .nav-links.show {
+        display: flex; /* Mostra i link quando la classe .show è presente */
+      }
 
-/* Schermi Molto Piccoli (max-width: 480px) */
-@media (max-width: 480px) {
-  body {
-    padding-top: 55px;
-  }
-  .navbar {
-    padding: 0.6rem 1rem; /* Ulteriore riduzione padding navbar */
-    height: 55px; /* Altezza navbar per schermi molto piccoli */
-  }
-  .logo img {
-    height: 25px;
-  }
-  .menu-toggle {
-    font-size: 1.6rem;
-  }
-  .nav-links {
-    top: 55px; /* Corrisponde alla nuova altezza navbar */
-    right: 0.8rem;
-  }
-  .nav-links li a {
-    font-size: 0.9rem;
-  }
+      .nav-links li {
+        margin: 0; /* Rimuove margini laterali dei li */
+        width: 100%; /* Occupa tutta la larghezza del dropdown */
+      }
 
-  .hero {
-    height: calc(100vh - 55px); /* Sottrae nuova altezza navbar */
-  }
-  /* Se vuoi rimpicciolire ulteriormente il video qui: */
-  /*
-  .bg-video {
-    width: 95%;
-    height: 60%;
-  }
-  */
+      .nav-links li a {
+        padding: 0.8rem 1rem; /* Padding per ogni link nel dropdown */
+        display: block; /* Per far sì che il padding si applichi correttamente e occupi larghezza */
+        text-align: left; /* Allinea testo a sinistra nel dropdown */
+        font-size: 0.95rem;
+        font-weight: 400; /* Adattato per Inter nel menu mobile */
+      }
+      .nav-links li a:hover {
+          background-color: #f5b800; /* Sfondo al passaggio del mouse */
+          border-radius: 4px;
+      }
 
-  .hero-button-wrapper {
-    top: 78%; /* Ancora più in basso se necessario */
-    width: 85%;
-  }
-  .hero-button {
-    font-size: 0.85rem;
-    padding: 10px 20px;
-  }
+      .menu-toggle {
+        display: block; /* Mostra l'icona hamburger su mobile */
+      }
 
-  .section .intro {
-    font-size: 1.1rem; /* Intro più piccolo */
-  }
-  h2 { /* Titoli h2 ancora più piccoli */
-    font-size: 1.6rem;
-  }
-  #funzionalita h2, #demo h2 { /* Assicura che anche gli h2 con ID siano ridimensionati */
-    font-size: 1.6rem;
-  }
-  #funzionalita .feature h3 { /* Titoli feature ancora più piccoli */
-    font-size: 1.1rem;
-  }
-  .feature p { /* Testo feature ancora più piccolo */
-    font-size: 0.9rem;
-    opacity: 1 !important; /* Assicura visibilità, considera di rimuovere !important */
-    height: auto;
-    visibility: visible;
-  }
+      .hero {
+        height: 100vh;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+      .hero-button-wrapper {
+        position: absolute;
+        top: 75%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+        width: 100%;
+display: flex;
+justify-content: center;
+      }
+      .hero-button {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+        font-weight: 600; /* Assicura coerenza */
+      }
 
-  .feature {
-    width: 95%; /* Feature quasi a tutta larghezza */
-    padding: 1rem;
-  }
+      .section {
+        padding: 3rem 1rem; /* Padding ridotto per le sezioni */
+      }
+      .section .intro {
+        font-size: 1.4rem;
+        padding: 0 0.5rem; /* Padding laterale per l'intro */
+      }
+      h2 {
+        font-size: 3.0rem; /* Titoli più piccoli */
+      }
 
-  .video-wrapper { /* Demo video iframe */
-    width: 95%;
-  }
-  .video-wrapper iframe {
-    height: 200px;
-  }
+      .features {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem; /* Gap ridotto */
+      }
+      .feature {
+        width: 90%; /* Larghezza maggiore su mobile */
+        max-width: 350px; /* Limita la larghezza massima */
+        min-height: auto; /* Rimuove altezza minima se non serve più per allineamento verticale */
+        padding: 1.2rem;
+      }
+       .feature h3 {
+        font-size: 1.2rem;
+      }
+      .feature p {
+        font-size: 1rem;
+      }
+      .video-wrapper {
+        width: 80%;
+        margin: 0 auto;
+      }
+    
 
-  .stamp-button {
-    font-size: 1rem;
-  }
-}
+      .video-wrapper iframe {
+        height: 200px; /* Altezza video ridotta su mobile */
+        width: 100%;
+      }
+
+      .envelope {
+        width: 90%;
+        max-width: 300px; /* Mantiene la larghezza massima dell'envelope */
+      }
+      .email-input {
+        font-size: 0.9rem;
+      }
+      .stamp-button {
+        font-size: 1rem;
+        padding: 0.7rem 1.2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+        body {
+            padding-top: 55px; /* Ancora più piccola la navbar */
+        }
+        .navbar {
+            padding: 0.6rem 0.8rem;
+        }
+        .logo img {
+            height: 25px;
+        }
+        .menu-toggle {
+            font-size: 1.6rem;
+        }
+        .nav-links {
+            top: 55px; /* Adatta alla nuova altezza navbar */
+            right: 0.8rem;
+        }
+        .nav-links li a {
+            font-size: 0.9rem;
+        }
+
+        .hero {
+            height: calc(100vh - 55px);
+        }
+        .bg-video {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+        }
+        .hero-button-wrapper {
+          top: 75%;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+        }
+         .hero-button {
+            font-size: 0.85rem;
+            padding: 9px 18px;
+        }
+
+        h2 {
+            font-size: 1.3rem;
+        }
+        .section .intro {
+            font-size: 0.95rem;
+        }
+        .feature {
+            width: 95%;
+        }
+        .feature p {
+          opacity: 1 !important;
+          height: auto;
+          visibility: visible;
+        }
+    
