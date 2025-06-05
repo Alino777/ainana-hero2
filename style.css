@@ -130,9 +130,11 @@
       z-index: -1;
     }
     
-    🔒 Aggiunta importante al tuo CSS globale:
-    Per evitare margini imprevisti su tutto il documento:
-    
+    html, body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     .feature p {
       opacity: 0;
       transition: opacity 0.3s ease;
