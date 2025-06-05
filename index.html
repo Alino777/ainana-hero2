@@ -138,84 +138,44 @@
     const btn = document.querySelector('.stamp-button');
     const mouth = document.querySelector('.mouth');
 
-    // Cambia espressione
     mouth.classList.add('smile');
-
-    // Cambia testo bottone
     btn.innerText = "📤 Inviata!";
     btn.style.backgroundColor = "#d6f5a3";
 
-    for (let i = 0; i < 6; i++) {
-  const confetto = document.createElement('div');
-  confetto.classList.add('confetti');
-  confetto.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
-  confetto.style.left = `50%`;
-  confetto.style.top = `0px`;
-  document.querySelector('.letter-wrapper').appendChild(confetto);
-  setTimeout(() => confetto.remove(), 400); // corrisponde a durata animazione
-}
-
-const duration = 2000;
-const animationEnd = Date.now() + duration;
-const defaults = {
-  startVelocity: 30,
-  spread: 360,
-  ticks: 60,
-  zIndex: 9999,
-  scalar: 1.6
-};
-
-function randomInRange(min, max) {
-  return Math.random() * (max - min) + min;
-}
-
-const interval = setInterval(function() {
-  const timeLeft = animationEnd - Date.now();
-
-  if (timeLeft <= 0) {
-    return clearInterval(interval);
-  }
-
-  confetti(Object.assign({}, defaults, {
-    particleCount: 10,
-    origin: {
-      x: randomInRange(0.2, 0.8),
-      y: Math.random() - 0.2
+    // Effetto DOM con coriandoli che escono dalla lettera
+    for (let i = 0; i < 12; i++) {
+      const confetto = document.createElement('div');
+      confetto.classList.add('confetti');
+      confetto.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
+      confetto.style.left = `${Math.random() * 100}%`;
+      confetto.style.top = `-10px`;
+      document.querySelector('.letter-wrapper').appendChild(confetto);
+      setTimeout(() => confetto.remove(), 500);
     }
-  }));
-}, 200);
 
-for (let i = 0; i < 6; i++) {
-  const confetto = document.createElement('div');
-  confetto.classList.add('confetti');
-  confetto.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
-  confetto.style.left = `50%`;
-  confetto.style.top = `0px`;
-  document.querySelector('.letter-wrapper').appendChild(confetto);
-  setTimeout(() => confetto.remove(), 400); // corrisponde a durata animazione
-}
+    // Effetto canvas su tutta la pagina
+    const duration = 2000;
+    const animationEnd = Date.now() + duration;
+    const defaults = {
+      startVelocity: 30,
+      spread: 360,
+      ticks: 60,
+      zIndex: 9999,
+      scalar: 1.4
+    };
 
+    const interval = setInterval(function () {
+      const timeLeft = animationEnd - Date.now();
+      if (timeLeft <= 0) return clearInterval(interval);
 
-    // Crea coriandoli su tutta la pagina
-    const duration = 3000;
-    const end = Date.now() + duration;
-    (function frame() {
-      confetti({
+      confetti(Object.assign({}, defaults, {
         particleCount: 10,
-        angle: Math.random() * 360,
-        spread: 120,
-        startVelocity: 30,
-        scalar: 1.5,
-        ticks: 400,
         origin: {
           x: Math.random(),
-          y: Math.random()
+          y: Math.random() - 0.2
         }
-      });
-      if (Date.now() < end) {
-        requestAnimationFrame(frame);
-      }
-    })();
+      }));
+    }, 150);
 
     // Reset bottone
     setTimeout(() => {
@@ -224,6 +184,7 @@ for (let i = 0; i < 6; i++) {
     }, 2000);
   }
 </script>
+
 <script>
   const menuToggle = document.getElementById('menu-toggle');
   const navLinks = document.getElementById('nav-links');
