@@ -124,35 +124,46 @@
 <!-- Libreria coriandoli -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.js"></script>
 
-
 <script>
-  function openEnvelope() {
-    document.querySelector('.envelope').classList.add('open');
-    const mouth = document.querySelector('.mouth');
-    mouth.classList.remove('smile'); // ✅ torna bocca tonda
-  }
+  document.getElementById("contact-form").addEventListener("submit", function (e) {
+    e.preventDefault(); // blocca invio reale
 
-  function closeEnvelope() {
-    document.querySelector('.envelope').classList.remove('open');
-  }
+    const email = document.querySelector('.email-input').value;
 
-  function sendEmail() {
+    // Invia tu via AJAX (solo se vuoi ancora usare FormSubmit)
+    fetch("https://formsubmit.co/ajax/ainana.app@gmail.com", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({ email })
+    })
+    .then(response => response.json())
+    .then(data => {
+      triggerSuccessEffects();
+    })
+    .catch(error => {
+      alert("Errore nell'invio.");
+    });
+  });
+
+  function triggerSuccessEffects() {
     const btn = document.querySelector('.stamp-button');
     const mouth = document.querySelector('.mouth');
 
-    mouth.classList.remove('smile');
-
+    mouth.classList.add('smile');
     btn.innerText = "📤 Inviata!";
     btn.style.backgroundColor = "#d6f5a3";
 
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 10; i++) {
       const confetto = document.createElement('div');
       confetto.classList.add('confetti');
       confetto.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
       confetto.style.left = `${Math.random() * 100}%`;
       confetto.style.top = `0px`;
       document.querySelector('.letter-wrapper').appendChild(confetto);
-      setTimeout(() => confetto.remove(), 1200);
+      setTimeout(() => confetto.remove(), 800);
     }
 
     setTimeout(() => {
