@@ -110,7 +110,8 @@
           <div class="eye"></div>
         </div>
       </div>
-      <button type="button" class="stamp-button" onclick="sendEmail()">📮 Iscriviti</button>
+      <form id="contact-form" class="letter-wrapper">
+        <button type="submit" class="stamp-button">📮 Iscriviti</button>
     </form>
   </section>
 
@@ -123,65 +124,54 @@
 
 <!-- Libreria coriandoli -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
 <script>
-  function openEnvelope() {
-    document.querySelector('.envelope').classList.add('open');
-    document.querySelector('.mouth').classList.remove('smile');
-  }
+  document.getElementById("contact-form").addEventListener("submit", function (e) {
+    e.preventDefault();
 
-  function closeEnvelope() {
-    document.querySelector('.envelope').classList.remove('open');
-  }
-
-  function sendEmail() {
+    const email = document.querySelector('.email-input').value;
     const btn = document.querySelector('.stamp-button');
     const mouth = document.querySelector('.mouth');
 
-    // Cambia espressione
-    mouth.classList.add('smile');
+    // Invia via AJAX a FormSubmit
+    fetch("https://formsubmit.co/ajax/ainana.app@gmail.com", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({ email: email })
+    })
+    .then(response => response.json())
+    .then(data => {
+      // Successo: effetto bocca + confetti
+      mouth.classList.add('smile');
+      btn.innerText = "📤 Inviata!";
+      btn.style.backgroundColor = "#d6f5a3";
 
-    // Cambia testo bottone
-    btn.innerText = "📤 Inviata!";
-    btn.style.backgroundColor = "#d6f5a3";
+      // Confetti visivi
+      const end = Date.now() + 800;
+      (function frame() {
+        confetti({
+          particleCount: 10,
+          spread: 100,
+          startVelocity: 30,
+          scalar: 1.2,
+          origin: { x: Math.random(), y: Math.random() * 0.6 }
+        });
+        if (Date.now() < end) requestAnimationFrame(frame);
+      })();
 
-    for (let i = 0; i < 6; i++) {
-  const confetto = document.createElement('div');
-  confetto.classList.add('confetti');
-  confetto.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
-  confetto.style.left = `50%`;
-  confetto.style.top = `0px`;
-  document.querySelector('.letter-wrapper').appendChild(confetto);
-  setTimeout(() => confetto.remove(), 400); // corrisponde a durata animazione
-}
+      setTimeout(() => {
+        btn.innerText = "📮 Iscriviti";
+        btn.style.backgroundColor = "#ffc85c";
+      }, 2000);
+    })
+    .catch(error => {
+      alert("Errore nell'invio, riprova.");
+    });
+  });
+</script>
 
-
-    // Crea coriandoli su tutta la pagina
-    const duration = 3000;
-    const end = Date.now() + duration;
-    (function frame() {
-      confetti({
-        particleCount: 10,
-        angle: Math.random() * 360,
-        spread: 120,
-        startVelocity: 30,
-        scalar: 1.5,
-        ticks: 400,
-        origin: {
-          x: Math.random(),
-          y: Math.random()
-        }
-      });
-      if (Date.now() < end) {
-        requestAnimationFrame(frame);
-      }
-    })();
-
-    // Reset bottone
-    setTimeout(() => {
-      btn.innerText = "📮 Iscriviti";
-      btn.style.backgroundColor = "#ffc85c";
-    }, 2000);
   }
 </script>
 <script>
