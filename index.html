@@ -183,60 +183,7 @@
     navLinks.classList.toggle('show');
   });
 </script>
-<script>
-  // ... (le tue funzioni openEnvelope e closeEnvelope rimangono invariate) ...
 
-  // Aggiungi un event listener al form
-  document.getElementById('contact-form').addEventListener('submit', function(event) {
-    // Previene l'invio immediato del form
-    event.preventDefault(); 
-    
-    // Esegui la tua animazione
-    playConfettiAnimation();
-
-    // Invia il form dopo un breve ritardo per dare tempo all'animazione di partire
-    setTimeout(() => {
-      this.submit();
-    }, 200); 
-  });
-
-  function playConfettiAnimation() {
-    const btn = document.querySelector('.stamp-button');
-    const mouth = document.querySelector('.mouth');
-
-    mouth.classList.add('smile');
-    btn.innerText = "📤 Inviata!";
-    btn.style.backgroundColor = "#d6f5a3";
-
-    const duration = 2000;
-    const animationEnd = Date.now() + duration;
-    const defaults = {
-      startVelocity: 30,
-      spread: 360,
-      ticks: 60,
-      zIndex: 9999,
-      scalar: 1.4
-    };
-
-    const interval = setInterval(function () {
-      const timeLeft = animationEnd - Date.now();
-      if (timeLeft <= 0) return clearInterval(interval);
-
-      confetti(Object.assign({}, defaults, {
-        particleCount: 10,
-        origin: {
-          x: Math.random(),
-          y: Math.random() - 0.2
-        }
-      }));
-    }, 150);
-
-    // Non c'è più bisogno del reset del bottone qui, 
-    // perché la pagina verrà ricaricata dopo l'invio.
-  }
-
-  // ... (il resto del tuo script per il menu toggle) ...
-</script>
 
 <script>
   function openEnvelope() {
