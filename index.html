@@ -99,8 +99,8 @@
   <section id="form" class="section">
     <h2>Iscriviti alla lista d'attesa</h2>
     <p>Ricevi in anteprima l'accesso al test privato.</p>
-
-    <form action="https://formsubmit.co/ainana.app@gmail.com" method="POST" class="letter-wrapper">
+  
+    <form id="contact-form" class="letter-wrapper">
       <div class="envelope">
         <div class="envelope-flap"></div>
         <input type="email" name="email" placeholder="La tua email" class="email-input" required onfocus="openEnvelope()" onblur="closeEnvelope()" />
@@ -110,10 +110,10 @@
           <div class="eye"></div>
         </div>
       </div>
-      <form id="contact-form" class="letter-wrapper">
-        <button type="submit" class="stamp-button">📮 Iscriviti</button>
+      <button type="submit" class="stamp-button">📮 Iscriviti</button>
     </form>
   </section>
+  
 
   <section id="social" class="section">
     <h2>Seguici</h2>
@@ -124,7 +124,17 @@
 
 <!-- Libreria coriandoli -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
 <script>
+  function openEnvelope() {
+    document.querySelector('.envelope').classList.add('open');
+    document.querySelector('.mouth').classList.remove('smile');
+  }
+
+  function closeEnvelope() {
+    document.querySelector('.envelope').classList.remove('open');
+  }
+
   document.getElementById("contact-form").addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -132,7 +142,7 @@
     const btn = document.querySelector('.stamp-button');
     const mouth = document.querySelector('.mouth');
 
-    // Invia via AJAX a FormSubmit
+    // Invia email in background
     fetch("https://formsubmit.co/ajax/ainana.app@gmail.com", {
       method: "POST",
       headers: {
@@ -143,36 +153,46 @@
     })
     .then(response => response.json())
     .then(data => {
-      // Successo: effetto bocca + confetti
+      // UI Feedback
       mouth.classList.add('smile');
       btn.innerText = "📤 Inviata!";
       btn.style.backgroundColor = "#d6f5a3";
 
-      // Confetti visivi
-      const end = Date.now() + 800;
+      // Coriandoli
+      const duration = 1000;
+      const animationEnd = Date.now() + duration;
+      const defaults = {
+        startVelocity: 25,
+        spread: 180,
+        ticks: 40,
+        zIndex: 9999,
+        scalar: 1
+      };
+
       (function frame() {
-        confetti({
-          particleCount: 10,
-          spread: 100,
-          startVelocity: 30,
-          scalar: 1.2,
+        confetti(Object.assign({}, defaults, {
+          particleCount: 12,
           origin: { x: Math.random(), y: Math.random() * 0.6 }
-        });
-        if (Date.now() < end) requestAnimationFrame(frame);
+        }));
+        if (Date.now() < animationEnd) {
+          requestAnimationFrame(frame);
+        }
       })();
 
+      // Reset
       setTimeout(() => {
         btn.innerText = "📮 Iscriviti";
         btn.style.backgroundColor = "#ffc85c";
+        document.querySelector('.email-input').value = "";
       }, 2000);
     })
     .catch(error => {
-      alert("Errore nell'invio, riprova.");
+      alert("Errore nell'invio. Riprova.");
     });
   });
 </script>
 
-  }
+
 </script>
 <script>
   const menuToggle = document.getElementById('menu-toggle');
