@@ -100,7 +100,7 @@
     <h2>Iscriviti alla lista d'attesa</h2>
     <p>Ricevi in anteprima l'accesso al test privato.</p>
   
-    <form id="contact-form" action="https://formsubmit.co/ainana.app@gmail.com" method="POST" class="letter-wrapper">
+    <form id="contact-form" class="letter-wrapper">
       <div class="envelope">
         <div class="envelope-flap"></div>
         <input type="email" name="email" placeholder="La tua email" class="email-input" required onfocus="openEnvelope()" onblur="closeEnvelope()" />
@@ -124,66 +124,6 @@
 <!-- Libreria coriandoli -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.js"></script>
 
-<script>
-  function openEnvelope() {
-    document.querySelector('.envelope').classList.add('open');
-    document.querySelector('.mouth').classList.remove('smile');
-  }
-
-  function closeEnvelope() {
-    document.querySelector('.envelope').classList.remove('open');
-  }
-
-  function sendEmail() {
-    const btn = document.querySelector('.stamp-button');
-    const mouth = document.querySelector('.mouth');
-
-    mouth.classList.add('smile');
-    btn.innerText = "📤 Inviata!";
-    btn.style.backgroundColor = "#d6f5a3";
-
-
-    // Effetto canvas su tutta la pagina
-    const duration = 2000;
-    const animationEnd = Date.now() + duration;
-    const defaults = {
-      startVelocity: 30,
-      spread: 360,
-      ticks: 60,
-      zIndex: 9999,
-      scalar: 1.4
-    };
-
-    const interval = setInterval(function () {
-      const timeLeft = animationEnd - Date.now();
-      if (timeLeft <= 0) return clearInterval(interval);
-
-      confetti(Object.assign({}, defaults, {
-        particleCount: 10,
-        origin: {
-          x: Math.random(),
-          y: Math.random() - 0.2
-        }
-      }));
-    }, 150);
-
-    // Reset bottone
-    setTimeout(() => {
-      btn.innerText = "📮 Iscriviti";
-      btn.style.backgroundColor = "#ffc85c";
-    }, 2000);
-  }
-</script>
-
-<script>
-  const menuToggle = document.getElementById('menu-toggle');
-  const navLinks = document.getElementById('nav-links');
-
-  menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('show');
-  });
-</script>
-
 
 <script>
   function openEnvelope() {
@@ -200,7 +140,7 @@
     const btn = document.querySelector('.stamp-button');
     const mouth = document.querySelector('.mouth');
 
-    mouth.classList.add('smile'); // 😄 diventa sorriso
+    mouth.classList.remove('smile');
 
     btn.innerText = "📤 Inviata!";
     btn.style.backgroundColor = "#d6f5a3";
